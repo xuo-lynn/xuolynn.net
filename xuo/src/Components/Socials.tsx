@@ -64,7 +64,7 @@ const Socials = () => {
         </a>
 
         <a
-          href="https://github.com/xuolynn"
+          href="https://github.com/xuo-lynn"
           target="_blank"
           rel="noopener noreferrer"
           className="text-slate-400 hover:text-gray-700 transition-colors"
