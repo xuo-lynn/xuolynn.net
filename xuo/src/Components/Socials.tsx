@@ -101,7 +101,7 @@ const Socials = () => {
             transform: 'translateX(0)',
           }}
         >
-          <Email />
+          <Email onClose={() => setEmailPopupOpen(false)} />
         </div>
       )}
     </div>

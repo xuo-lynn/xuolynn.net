@@ -1,6 +1,11 @@
 import React from 'react';
+import { IoClose } from 'react-icons/io5';
 
-export default function Contact() {
+interface EmailProps {
+    onClose: () => void;
+}
+
+export default function Email({ onClose }: EmailProps) {
     const [result, setResult] = React.useState("");
 
     const onSubmit = async (event: any) => {
@@ -18,8 +23,9 @@ export default function Contact() {
         const data = await response.json();
 
         if (data.success) {
-            setResult("Form Submitted Successfully");
+            setResult("Message Sent!");
             event.target.reset();
+            setTimeout(() => onClose(), 2000);
         } else {
             console.log("Error", data);
             setResult(data.message);
@@ -27,13 +33,23 @@ export default function Contact() {
     };
 
     return (
-        <div className="p-2 bg-transparent rounded-lg max-w-md mx-auto">
+        <div className="p-2 bg-transparent rounded-lg max-w-md mx-auto relative">
+            <button 
+                onClick={onClose}
+                type="button"
+                className="absolute top-0 right-0 text-gray-500 hover:text-gray-700 z-10"
+            >
+                <IoClose size={24} />
+            </button>
             <form onSubmit={onSubmit} className="bg-transparent rounded-lg px-4 pt-4 pb-4 mb-2 flex flex-col">
+                <div className="flex justify-between items-center">
+                    <h2 className="text-slate-300 text-2xl font-semibold mb-4">I typically respond within a day.</h2>
+                </div>
                 <input 
                     type="text" 
                     name="name" 
                     required 
-                    className="bg-transparent shadow appearance-none border-2 border-gray-700 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight mb-2 font-semibold"
+                    className="bg-transparent shadow appearance-none border-2 border-gray-700 rounded-lg w-full py-2 px-3 text-gray-400 leading-tight mb-2 font-semibold"
                     placeholder="Name"
                 />
                 <input 
@@ -53,7 +69,7 @@ export default function Contact() {
                 <div className="flex justify-center mt-4">
                     <button 
                         type="submit" 
-                        className="bg-transparent w-20 border-2 border-gray-700 text-gray-500 hover:bg-gray-700 hover:text-white font-bold py-1 px-2 rounded-lg focus:outline-none focus:shadow-outline"
+                        className="bg-blue-900/20 w-24 border-2 border-blue-800/50 text-blue-500 hover:bg-blue-800 hover:text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline text-lg"
                     >
                         Send
                     </button>

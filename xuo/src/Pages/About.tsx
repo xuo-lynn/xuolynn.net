@@ -45,8 +45,8 @@ const About = () => {
               </ul>
               <p className="text-slate-400 text-lg md:text-2xl font-medium mt-8">
                 <strong className="text-white">Aside from my technical side</strong>, I identify as non-binary, and go by she/her pronouns. <br className="hidden md:block"/> I enjoy 
-                playing video games and learning guitar. I'm around grandmaster rank in both <br className="hidden md:block"/> LoL and TFT, and <HoverVideo videoSrc="/riff.mp4">this</HoverVideo> is a song I'm currently learning if you know it :) 
-                Feel free to <br className="hidden md:block"/> contact me about job opportunities or simply just to connect and chat!
+                playing video games and learning guitar. I'm around grandmaster rank in both <br className="hidden md:block"/> LoL and TFT, and <HoverVideo videoSrc="/riff.mp4">this</HoverVideo> is a song I'm currently learning if you know it! 
+                Feel free to contact <br className="hidden md:block"/> me about job opportunities, or simply just to connect and chat.
               </p>
             </div>
             
