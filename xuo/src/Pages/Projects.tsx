@@ -39,7 +39,7 @@ const Projects = () => {
               githubLink="https://github.com/xuo-lynn/portfolio-website"
             />
             <div>
-              <img className="pt-10 ml-[120px] w-60" src="/mocha.gif" alt="mocha" />
+              <img className="pt-10 w-60 mx-auto" src="/mocha.gif" alt="mocha" />
               <p className="pt-2 text-lg text-gray-400 text-center mt-2">
                 Thanks for visiting!<br/>
                 Built and designed by xuo

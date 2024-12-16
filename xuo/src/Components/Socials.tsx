@@ -5,7 +5,26 @@ import VanillaTilt from 'vanilla-tilt';
 
 const Socials = () => {
   const [isEmailPopupOpen, setEmailPopupOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const emailPopupRef = useRef<HTMLDivElement | null>(null);
+  let lastScrollTop = 0;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScrollTop > lastScrollTop) {
+        setIsVisible(false); // Scrolling down
+      } else {
+        setIsVisible(true); // Scrolling up
+      }
+      lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // For Mobile or negative scrolling
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -41,7 +60,11 @@ const Socials = () => {
   };
 
   return (
-    <div className="fixed top-6 right-6 z-50">
+    <div
+      className={`fixed top-6 right-6 z-50 transition-opacity duration-500 ${
+        isVisible ? 'opacity-100' : 'opacity-0'
+      }`}
+    >
       <div className="flex gap-6 items-center">
         <a
           href="https://www.linkedin.com/in/xuolynn"
