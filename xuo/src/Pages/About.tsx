@@ -8,8 +8,9 @@ const About = () => {
 
   useEffect(() => {
     if (cardRef.current) {
+      const isMobile = window.innerWidth < 768; // 768px is the standard md breakpoint
       VanillaTilt.init(cardRef.current, {
-        max: 15,
+        max: isMobile ? 1 : 5,
         speed: 200,
         glare: true,
         "max-glare": 0.1,
