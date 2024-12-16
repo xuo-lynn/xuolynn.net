@@ -26,7 +26,7 @@ const About = () => {
           
           <div className="flex flex-col md:flex-row justify-between items-start">
             <div ref={cardRef} className="w-full md:w-3/4 p-7 shadow-2xl bg-black bg-opacity-45 backdrop-blur-md rounded-2xl">
-              <p className="text-slate-400 text-lg md:text-2xl font-medium">I'm a <span className="text-white">software engineer</span> with previous back-end experience at <span className="text-red-500 font-semibold">Netflix</span><br className="hidden md:block" />
+              <p className="text-slate-400 text-lg md:text-2xl font-medium">I'm a <span className="text-white">junior software engineer</span> with previous back-end experience at <span className="text-red-500 font-semibold">Netflix</span><br className="hidden md:block" />
               and <span className="text-blue-500 font-semibold">Meta</span>. I'm currently working a contract position as a swift developer, and <br className="hidden md:block"/>
               about to start a masters in computer science. I've worked mainly on developing <br className="hidden md:block"/>
               <span className="text-white">back-end systems and APIs</span>, but I'm proficient with front-end, ML, and AI as well.</p>
