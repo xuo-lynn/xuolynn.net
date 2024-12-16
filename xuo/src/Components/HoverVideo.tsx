@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 interface HoverVideoProps {
   children: React.ReactNode;
@@ -8,6 +8,11 @@ interface HoverVideoProps {
 
 const HoverVideo: React.FC<HoverVideoProps> = ({ children, videoSrc, style }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) videoRef.current.volume = 0.05;
+  }, [isHovered]);
 
   return (
     <span className="relative inline-block">
@@ -20,7 +25,8 @@ const HoverVideo: React.FC<HoverVideoProps> = ({ children, videoSrc, style }) =>
       </span>
       {isHovered && (
         <video
-          className="fixed bottom-8 left-[400px] rounded-lg shadow-lg"
+          ref={videoRef}
+          className="fixed bottom-8 left-[240px] rounded-lg shadow-lg"
           style={style}
           width="200"
           autoPlay
