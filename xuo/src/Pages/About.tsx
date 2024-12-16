@@ -44,13 +44,13 @@ const About = () => {
               </ul>
               <p className="text-slate-400 text-lg md:text-2xl font-medium mt-8">
                 <strong className="text-white">Aside from my technical side</strong>, I identify as non-binary, and go by he/her pronouns. <br className="hidden md:block"/> I enjoy 
-                playing video games and learning guitar. I'm around grandmaster rank in both <br className="hidden md:block"/> LoL and TFT, and <HoverVideo videoSrc="/src/assets/riff.mp4">this</HoverVideo> is a song I'm currently learning if you know it :) 
+                playing video games and learning guitar. I'm around grandmaster rank in both <br className="hidden md:block"/> LoL and TFT, and <HoverVideo videoSrc="/riff.mp4">this</HoverVideo> is a song I'm currently learning if you know it :) 
                 Feel free to <br className="hidden md:block"/> contact me about job opportunities or simply just to connect and chat!
               </p>
             </div>
             
             <div className="w-full md:w-1/4 flex flex-col items-center mt-8 md:mt-0 lg:pl-20">
-              <img src="src/assets/kuromi.gif" alt="mocha" className="w-48 md:w-64 pt-10 md:pt-20" />
+              <img src="/kuromi.gif" alt="mocha" className="w-48 md:w-64 pt-10 md:pt-20" />
               <p className="text-slate-400 text-xl md:text-2xl font-medium mt-8">I'll update this site as I <br/>progress in my career!</p>
             </div>
           </div>

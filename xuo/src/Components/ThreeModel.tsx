@@ -47,7 +47,7 @@ const ThreeModel = () => {
     // Load the 3D model
     const loader = new GLTFLoader();
     loader.load(
-      '/src/assets/hirono.glb',
+      '/hirono.glb',
       (gltf) => {
         scene.add(gltf.scene);
         
