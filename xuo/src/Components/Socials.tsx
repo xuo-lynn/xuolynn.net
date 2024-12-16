@@ -8,13 +8,17 @@ const Socials = () => {
   const emailPopupRef = useRef<HTMLDivElement | null>(null);
   let lastScrollTop = 0;
 
+  const SCROLL_THRESHOLD = 15; // Define a scroll threshold
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      if (currentScrollTop > lastScrollTop) {
-        setIsVisible(false); // Scrolling down
-      } else {
-        setIsVisible(true); // Scrolling up
+      if (Math.abs(currentScrollTop - lastScrollTop) > SCROLL_THRESHOLD) {
+        if (currentScrollTop > lastScrollTop) {
+          setIsVisible(false); // Scrolling down
+        } else {
+          setIsVisible(true); // Scrolling up
+        }
       }
       lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // For Mobile or negative scrolling
     };
