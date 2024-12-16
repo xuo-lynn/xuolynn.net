@@ -53,7 +53,7 @@ export default function Contact() {
                 <div className="flex justify-center mt-4">
                     <button 
                         type="submit" 
-                        className="bg-transparent w-20 border-2 border-gray-500 text-gray-500 hover:bg-gray-700 hover:text-white font-bold py-1 px-2 rounded-lg focus:outline-none focus:shadow-outline"
+                        className="bg-transparent w-20 border-2 border-gray-700 text-gray-500 hover:bg-gray-700 hover:text-white font-bold py-1 px-2 rounded-lg focus:outline-none focus:shadow-outline"
                     >
                         Send
                     </button>
