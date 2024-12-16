@@ -69,7 +69,7 @@ const Socials = () => {
           rel="noopener noreferrer"
           className="text-slate-400 hover:text-gray-700 transition-colors"
         >
-          <FaGithub size={32} />
+          <FaGithub size={30} />
         </a>
         
         <a
@@ -79,7 +79,7 @@ const Socials = () => {
           className="text-slate-400 hover:text-green-500 transition-colors"
         >
           <FaSpotify size={30} />
-        </a>
+        </a>  
         
         <button
           onClick={toggleEmailPopup}
@@ -92,7 +92,14 @@ const Socials = () => {
       {isEmailPopupOpen && (
         <div
           ref={emailPopupRef}
-          className="popup bg-black bg-opacity-45 backdrop-blur-md rounded-2xl p-4 shadow-lg mt-4 relative animate-fadeIn"
+          className="popup bg-black bg-opacity-45 backdrop-blur-md rounded-2xl p-4 shadow-lg mt-1 relative animate-fadeIn max-w-[90vw] right-0 sm:right-auto"
+          style={{
+            position: 'fixed',
+            top: '80px',
+            right: '24px',
+            width: 'min(400px, 90vw)',
+            transform: 'translateX(0)',
+          }}
         >
           <Email />
         </div>
