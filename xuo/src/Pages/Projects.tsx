@@ -36,7 +36,7 @@ const Projects = () => {
               title= "Portfolio Wesbite" 
               description="Website you're currently on. Just a fun way for me showcase my career and skills!" 
               techStack={["Typescript", "React", "NodeJS","ThreeJS", "Vercel"]}
-              githubLink="https://github.com/xuo-lynn/portfolio-website"
+              githubLink="https://github.com/xuo-lynn/xuo"
             />
             <div>
               <img className="pt-10 w-60 mx-auto" src="/mocha.gif" alt="mocha" />
