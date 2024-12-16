@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { FaLinkedin, FaSpotify, FaGithub, FaEnvelope } from 'react-icons/fa';
 import Email from './Email';
-import VanillaTilt from 'vanilla-tilt';
 
 const Socials = () => {
   const [isEmailPopupOpen, setEmailPopupOpen] = useState(false);
@@ -44,17 +43,6 @@ const Socials = () => {
     };
   }, [isEmailPopupOpen]);
 
-  useEffect(() => {
-    if (emailPopupRef.current) {
-      VanillaTilt.init(emailPopupRef.current, {
-        max: 25,
-        speed: 400,
-        glare: true,
-        "max-glare": 0.5,
-      });
-    }
-  }, [isEmailPopupOpen]);
-
   const toggleEmailPopup = () => {
     setEmailPopupOpen(!isEmailPopupOpen);
   };
@@ -93,7 +81,6 @@ const Socials = () => {
           <FaSpotify size={30} />
         </a>
         
-
         <button
           onClick={toggleEmailPopup}
           className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white px-4 py-2 rounded-md transition-colors"
