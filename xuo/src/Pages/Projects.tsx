@@ -22,7 +22,7 @@ const Projects = () => {
             />
             <Project 
               title="Store Sales System" 
-              description="Inventory, sales, database management, etc. quare if it never got to its A-series funding." 
+              description="Inventory, sales, database management, etc. Square if it never got to its A-series funding." 
               techStack={["Java", "SpringBoot", "MySQL", "Docker", "AWS"]}
               githubLink="https://github.com/xuo-lynn/Point-Of-Sale-System"
             />
