@@ -23,7 +23,7 @@ const ThreeModel = () => {
     camera.position.z = 5;
     renderer.setClearColor(0x000000, 0);
 
-    // Enable pixel ratio for sharper rendering on high-DPI displays
+  
     renderer.setPixelRatio(window.devicePixelRatio);
 
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -35,7 +35,7 @@ const ThreeModel = () => {
     controls.dampingFactor = .1;
 
 
-    // Add lighting
+    
     const pointLight = new THREE.PointLight(0xffffff,0.5)
     scene.add(pointLight)
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -44,19 +44,16 @@ const ThreeModel = () => {
     directionalLight.position.set(5, 5, 5);
     scene.add(directionalLight);
 
-    // Load the 3D model
     const loader = new GLTFLoader();
     loader.load(
       '/hirono.glb',
       (gltf) => {
         scene.add(gltf.scene);
         
-        // Center the model
         const box = new THREE.Box3().setFromObject(gltf.scene);
         const center = box.getCenter(new THREE.Vector3());
         gltf.scene.position.sub(center);
         
-        // Set camera position based on model size
         const size = box.getSize(new THREE.Vector3());
         const maxDim = Math.max(size.x, size.y, size.z);
         const fov = camera.fov * (Math.PI / 180);
@@ -73,9 +70,8 @@ const ThreeModel = () => {
     
     const animate = () => {
       requestAnimationFrame(animate);
-      // Add automatic rotation
       if (scene.children.length > 0) {
-        scene.rotation.y += -0.009; // Adjust this value to change rotation speed
+        scene.rotation.y += -0.009; 
       }
       renderer.render(scene, camera);
     };

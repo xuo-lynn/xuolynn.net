@@ -33,7 +33,6 @@
     scroll-behavior: smooth;
   }
 
-  /* Custom Scrollbar Styles */
   body::-webkit-scrollbar {
     width: 8px;
   }
