@@ -8,26 +8,28 @@ const Socials = () => {
   const emailPopupRef = useRef<HTMLDivElement | null>(null);
   let lastScrollTop = 0;
 
-  const SCROLL_THRESHOLD = 15; // Define a scroll threshold
+  const SCROLL_THRESHOLD = 15; 
 
   useEffect(() => {
     const handleScroll = () => {
+      if (isEmailPopupOpen) return;
+
       const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
       if (Math.abs(currentScrollTop - lastScrollTop) > SCROLL_THRESHOLD) {
         if (currentScrollTop > lastScrollTop) {
-          setIsVisible(false); // Scrolling down
+          setIsVisible(false);
         } else {
-          setIsVisible(true); // Scrolling up
+          setIsVisible(true);
         }
       }
-      lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // For Mobile or negative scrolling
+      lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [isEmailPopupOpen]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -49,6 +51,7 @@ const Socials = () => {
 
   const toggleEmailPopup = () => {
     setEmailPopupOpen(!isEmailPopupOpen);
+    setIsVisible(true); // Ensure visibility when the popup is toggled
   };
 
   return (
