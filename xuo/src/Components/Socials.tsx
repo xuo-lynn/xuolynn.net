@@ -93,7 +93,7 @@ const Socials = () => {
           className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white px-4 py-2 rounded-md transition-colors"
         >
           <FaEnvelope size={30} />
-          <span>Message Me</span>
+          <span>Message</span>
         </button>
       </div>
       {isEmailPopupOpen && (
