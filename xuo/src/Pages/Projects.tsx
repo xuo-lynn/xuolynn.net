@@ -10,25 +10,25 @@ const Projects = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
           <Project 
               title="Apple Vision Pro AI  " 
-              description="Utilizes RealityKit API to create smart image viewer. Probably not helping blind people yet, since Apple doesn't let developers access the camera stream." 
+              description="Utilizes RealityKit API to create smart image scanner. Probably not helping blind people yet, since Apple doesn't let developers access the camera stream." 
               techStack={["Swift", "SwiftUI", "VisionOS", "RealityKit"]}
               githubLink="https://github.com/xuo-lynn/VisionOS-Smart-Image"
             />
             <Project 
               title="ChessAI with Neural Net" 
-              description="Trained over a few epochs with neural net. Worse than Magnus, but probably better than most people." 
+              description="Trained with neural net and dataset. Worse than Stockfish, but probably better than most people." 
               techStack={["Python", "Tensorflow", "Keras", "Chess.py", "Machine Learning"]}
               githubLink="https://github.com/xuo-lynn/neural-network-chess-engine"
             />
             <Project 
               title="Store Sales System" 
-              description="Inventory, sales, database management, etc. Square if it never got to its A-series funding." 
+              description="Inventory, sales, database management, etc. Basically Square if it never got to its A-series funding." 
               techStack={["Java", "SpringBoot", "MySQL", "Docker", "AWS"]}
               githubLink="https://github.com/xuo-lynn/Point-Of-Sale-System"
             />
             <Project 
               title="Discord Music API Bot" 
-              description="Discord shut down most of their music bots, so I used YoutubeAPI and downloaded with FFMPEG to make my own." 
+              description="Discord shut down most of their music bots, so I just made my own." 
               techStack={["Python", "Discord.py", "Discord API", "Youtube API", "DigitalOcean"]}
               githubLink="https://github.com/xuo-lynn/discord-melody-bot"
             />
