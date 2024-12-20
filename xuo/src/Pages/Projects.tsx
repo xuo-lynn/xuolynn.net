@@ -6,19 +6,27 @@ const Projects = () => {
     <AnimateOnScroll>
       <div id="projects" className="min-h-screen pt-5 flex justify-center items-start">
         <div className="container mx-auto px-4 py-16">
-          <h1 className="text-5xl font-bold text-white mb-8 relative after:content-[''] after:absolute after:top-1/2 after:ml-4 after:w-80 after:h-[1px] after:bg-white">/ projects</h1>
+          <h1 className="text-5xl font-bold text-white mb-8 relative after:content-[''] after:absolute after:top-1/2 after:ml-4 after:w-80 after:h-[1px] after:bg-white">
+            / projects
+          </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
-          <Project 
+            <Project 
+              title="Dynamic Island for MacOS" 
+              description="Made a dynamic island UI app for MacOS. Utilizes Swift and System APIs to pull media info. The framework import took me like 5 hours to debug." 
+              techStack={["Swift", "SwiftUI", "Objective-C", "MediaRemote", "System API"]}
+              githubLink="https://github.com/xuo-lynn/DynaNotch"
+            />
+            <Project 
+              title="Discord Music API Bot" 
+              description="Discord kinda shut down most of their music bots, so I just made my own. Also, I ran out of AWS credits and had to retire it." 
+              techStack={["Python", "Discord.py", "Discord API", "Youtube API", "AWS"]}
+              githubLink="https://github.com/xuo-lynn/discord-melody-bot"
+            />
+            <Project 
               title="Store Management System" 
               description="Inventory, sales, database management, etc. Basically Square if it never got to its A-series funding." 
               techStack={["Java", "SpringBoot", "MySQL", "Docker", "RESTFul", "AWS"]}
               githubLink="https://github.com/xuo-lynn/Point-Of-Sale-System"
-            />
-          <Project 
-              title= "Dynamic Island for MacOS" 
-              description="Made a dynamic island UI app for MacOS. Utilizes Swift and System APIs to pull media info. The framework import took me like 5 hours to debug." 
-              techStack={["Swift", "SwiftUI", "Objective-C","MediaRemote", "System API"]}
-              githubLink="https://github.com/xuo-lynn/DynaNotch"
             />
             <Project 
               title="ChessAI with Neural Net" 
@@ -27,15 +35,9 @@ const Projects = () => {
               githubLink="https://github.com/xuo-lynn/neural-network-chess-engine"
             />
             <Project 
-              title="Discord Music API Bot" 
-              description="Discord shut down most of their music bots, so I just made my own." 
-              techStack={["Python", "Discord.py", "Discord API", "Youtube API", "DigitalOcean"]}
-              githubLink="https://github.com/xuo-lynn/discord-melody-bot"
-            />
-            <Project 
-              title= "Portfolio Wesbite" 
-              description="Website you're currently on. Just a fun way for me showcase my career and skills! " 
-              techStack={["Typescript", "React", "NodeJS","ThreeJS", "Vercel"]}
+              title="Portfolio Website" 
+              description="Website you're currently on. Just a fun way for me showcase my career and skills!" 
+              techStack={["Typescript", "React", "NodeJS", "ThreeJS", "Vercel"]}
               githubLink="https://github.com/xuo-lynn/xuo"
             />
             <div>
@@ -43,7 +45,7 @@ const Projects = () => {
               <p className="pt-2 text-lg text-gray-400 text-center mt-2">
                 Thanks for visiting!<br/>
                 Thoughtfully developed - xuo
-               </p>
+              </p>
             </div>
           </div>
         </div>
