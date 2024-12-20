@@ -6,11 +6,11 @@ const Intro = () => {
     <div className="pt-2 flex flex-col px-4">
        <TypeAnimation
         sequence={[
-          'hi, im stella.',
+          'hi, im set.',
           2000,
           '',
           500,
-          'hi, im set.',
+          'hi, im stella.',
           2000,
           ''
         ]}

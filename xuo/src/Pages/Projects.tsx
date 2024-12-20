@@ -9,22 +9,22 @@ const Projects = () => {
           <h1 className="text-5xl font-bold text-white mb-8 relative after:content-[''] after:absolute after:top-1/2 after:ml-4 after:w-80 after:h-[1px] after:bg-white">/ projects</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
           <Project 
-              title="Apple Vision Pro AI  " 
-              description="Utilizes RealityKit API to create smart image scanner. Probably not helping blind people yet, since Apple doesn't let developers access the camera stream." 
-              techStack={["Swift", "SwiftUI", "VisionOS", "RealityKit"]}
-              githubLink="https://github.com/xuo-lynn/VisionOS-Smart-Image"
+              title="Store Management System" 
+              description="Inventory, sales, database management, etc. Basically Square if it never got to its A-series funding." 
+              techStack={["Java", "SpringBoot", "MySQL", "Docker", "RESTFul", "AWS"]}
+              githubLink="https://github.com/xuo-lynn/Point-Of-Sale-System"
+            />
+          <Project 
+              title= "Dynamic Island for MacOS" 
+              description="Made a dynamic island UI app for MacOS. Utilizes Swift and System APIs to pull media info. The framework import took me like 5 hours to debug." 
+              techStack={["Swift", "SwiftUI", "Objective-C","MediaRemote", "System API"]}
+              githubLink="https://github.com/xuo-lynn/DynaNotch"
             />
             <Project 
               title="ChessAI with Neural Net" 
               description="Trained with neural net and dataset. Worse than Stockfish, but probably better than most people." 
               techStack={["Python", "Tensorflow", "Keras", "Chess.py", "Machine Learning"]}
               githubLink="https://github.com/xuo-lynn/neural-network-chess-engine"
-            />
-            <Project 
-              title="Store Sales System" 
-              description="Inventory, sales, database management, etc. Basically Square if it never got to its A-series funding." 
-              techStack={["Java", "SpringBoot", "MySQL", "Docker", "RESTFul", "AWS"]}
-              githubLink="https://github.com/xuo-lynn/Point-Of-Sale-System"
             />
             <Project 
               title="Discord Music API Bot" 
@@ -34,7 +34,7 @@ const Projects = () => {
             />
             <Project 
               title= "Portfolio Wesbite" 
-              description="Website you're currently on. Just a fun way for me showcase my career and skills!" 
+              description="Website you're currently on. Just a fun way for me showcase my career and skills! " 
               techStack={["Typescript", "React", "NodeJS","ThreeJS", "Vercel"]}
               githubLink="https://github.com/xuo-lynn/xuo"
             />
