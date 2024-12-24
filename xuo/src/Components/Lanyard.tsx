@@ -160,6 +160,12 @@ const Lanyard: React.FC = () => {
     }
   }, [data?.activities, lastActivity]);
 
+  useEffect(() => {
+    if (lastListeningActivity) {
+      localStorage.setItem('lastListeningActivity', JSON.stringify(lastListeningActivity));
+    }
+  }, [lastListeningActivity]);
+
   if (!data) {
     return <div>Loading...</div>;
   }
