@@ -156,14 +156,25 @@ const Lanyard: React.FC = () => {
         setLastListeningActivity({ song, albumArt: album_art_url, artist });
         localStorage.setItem('lastListeningActivity', JSON.stringify({ song, albumArt: album_art_url, artist }));
       }
-    } else if (!data?.listening_to_spotify && !lastListeningActivity) {
+    } else if (!data?.listening_to_spotify) {
       // Retrieve the last listening activity from localStorage if not currently listening
       const storedLastListeningActivity = localStorage.getItem('lastListeningActivity');
       if (storedLastListeningActivity) {
         setLastListeningActivity(JSON.parse(storedLastListeningActivity));
+      } else {
+        // Handle the case where there is no stored last listening activity
+        setLastListeningActivity(null);
       }
     }
   }, [data?.listening_to_spotify, data?.spotify, lastListeningActivity]);
+
+  useEffect(() => {
+    // Initialize lastListeningActivity from localStorage on component mount
+    const storedLastListeningActivity = localStorage.getItem('lastListeningActivity');
+    if (storedLastListeningActivity) {
+      setLastListeningActivity(JSON.parse(storedLastListeningActivity));
+    }
+  }, []);
 
   useEffect(() => {
     const currentActivity = data?.activities.find(activity => activity.type === 0) as LanyardData['activities'][0] | undefined;
