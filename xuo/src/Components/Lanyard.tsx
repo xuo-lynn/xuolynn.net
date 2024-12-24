@@ -82,6 +82,8 @@ const Lanyard: React.FC = () => {
     fetchData();
 
     const socket = new WebSocket('wss://api.lanyard.rest/socket');
+    let heartbeatInterval: ReturnType<typeof setInterval>;
+    let timeout: ReturnType<typeof setTimeout>;
 
     socket.onopen = () => {
       console.log('WebSocket connection opened');
@@ -95,19 +97,45 @@ const Lanyard: React.FC = () => {
 
     socket.onmessage = (event) => {
       const message = JSON.parse(event.data);
-      if (message.op === 0 && message.t === 'INIT_STATE') {
-        setData(message.d);
-      } else if (message.op === 0 && message.t === 'PRESENCE_UPDATE') {
-        setData(message.d);
+
+      if (message.op === 1) { // Opcode 1: Hello
+        const { heartbeat_interval } = message.d;
+        clearInterval(heartbeatInterval);
+        heartbeatInterval = setInterval(() => {
+          socket.send(JSON.stringify({ op: 3 })); // Opcode 3: Heartbeat
+        }, heartbeat_interval);
+
+        // Set a timeout to close the connection if no heartbeat is received
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+          console.log('WebSocket connection timed out');
+          socket.close();
+        }, 4 * 60 * 1000); // 4 minutes
+      }
+
+      if (message.op === 0) {
+        if (message.t === 'INIT_STATE' || message.t === 'PRESENCE_UPDATE') {
+          setData(message.d);
+        }
+        // Reset the timeout on receiving a valid message
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+          console.log('WebSocket connection timed out');
+          socket.close();
+        }, 4 * 60 * 1000); // 4 minutes
       }
     };
 
     socket.onclose = () => {
       console.log('WebSocket connection closed');
+      clearInterval(heartbeatInterval);
+      clearTimeout(timeout);
     };
 
     return () => {
       socket.close();
+      clearInterval(heartbeatInterval);
+      clearTimeout(timeout);
     };
   }, []);
 
@@ -126,9 +154,10 @@ const Lanyard: React.FC = () => {
       const { song, album_art_url, artist } = data.spotify;
       if (lastListeningActivity?.song !== song) {
         setLastListeningActivity({ song, albumArt: album_art_url, artist });
+        localStorage.setItem('lastListeningActivity', JSON.stringify({ song, albumArt: album_art_url, artist }));
       }
     } else if (!data?.listening_to_spotify && !lastListeningActivity) {
-      // Keep the last listening activity if no new song is detected
+      // Retrieve the last listening activity from localStorage if not currently listening
       const storedLastListeningActivity = localStorage.getItem('lastListeningActivity');
       if (storedLastListeningActivity) {
         setLastListeningActivity(JSON.parse(storedLastListeningActivity));
