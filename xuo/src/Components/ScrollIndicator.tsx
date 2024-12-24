@@ -28,27 +28,25 @@ const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({ targetId }) => {
   };
 
   return (
-    isVisible && (
-      <button 
-        onClick={scrollToTarget}
-        className="fixed bottom-8 right-8 text-white/40 animate-bounce hover:text-white/60 transition-opacity duration-300"
+    <button 
+      onClick={scrollToTarget}
+      className={`fixed bottom-8 right-8 text-white/40 animate-bounce hover:text-white/60 transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+    >
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        className="h-8 w-8" 
+        fill="none" 
+        viewBox="0 0 24 24" 
+        stroke="currentColor"
       >
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          className="h-8 w-8" 
-          fill="none" 
-          viewBox="0 0 24 24" 
-          stroke="currentColor"
-        >
-          <path 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            strokeWidth={3} 
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"
-          />
-        </svg>
-      </button>
-    )
+        <path 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+          strokeWidth={3} 
+          d="M19 14l-7 7m0 0l-7-7m7 7V3"
+        />
+      </svg>
+    </button>
   );
 };
 
