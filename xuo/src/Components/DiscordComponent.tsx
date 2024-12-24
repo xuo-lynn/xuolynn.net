@@ -104,7 +104,13 @@ const DiscordComponent: React.FC = () => {
                             </div>
                             <div className="border-b border-gray-500 mb-3"></div>
                             <div className="transition-all duration-500 ease-in-out overflow-hidden">
-                                <div style={{ height: activeSection === 'about' ? 'auto' : '0' }}>
+                                <div 
+                                    style={{ 
+                                        height: activeSection === 'about' ? 'auto' : '0', 
+                                        opacity: activeSection === 'about' ? '1' : '0',
+                                        transition: 'height 0.5s ease-in-out, opacity 0.5s ease-in-out'
+                                    }}
+                                >
                                     {activeSection === 'about' && (
                                         <div>
                                             <p className="text-slate-300"> 
@@ -138,7 +144,13 @@ const DiscordComponent: React.FC = () => {
                                         </div>
                                     )}
                                 </div>
-                                <div style={{ height: activeSection === 'activity' ? 'auto' : '0' }}>
+                                <div 
+                                    style={{ 
+                                        height: activeSection === 'activity' ? 'auto' : '0', 
+                                        opacity: activeSection === 'activity' ? '1' : '0',
+                                        transition: 'height 0.5s ease-in-out, opacity 0.5s ease-in-out'
+                                    }}
+                                >
                                     {activeSection === 'activity' && (
                                         <div>
                                             <h2 className="text-white pb-2">Displaying my real-time activity with LanyardAPI. UI made from scratch!</h2>
