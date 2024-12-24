@@ -1,19 +1,14 @@
-import { useState, useEffect, useRef } from 'react';
-import { FaLinkedin, FaSpotify, FaGithub, FaEnvelope } from 'react-icons/fa';
-import Email from './Email';
+import { useState, useEffect} from 'react';
+import { FaLinkedin, FaSpotify, FaGithub } from 'react-icons/fa';
 
 const Socials = () => {
-  const [isEmailPopupOpen, setEmailPopupOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const emailPopupRef = useRef<HTMLDivElement | null>(null);
   let lastScrollTop = 0;
 
   const SCROLL_THRESHOLD = 15; 
 
   useEffect(() => {
     const handleScroll = () => {
-      if (isEmailPopupOpen) return;
-
       const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
       if (Math.abs(currentScrollTop - lastScrollTop) > SCROLL_THRESHOLD) {
         if (currentScrollTop > lastScrollTop) {
@@ -29,30 +24,7 @@ const Socials = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [isEmailPopupOpen]);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (emailPopupRef.current && !emailPopupRef.current.contains(event.target as Node)) {
-        setEmailPopupOpen(false);
-      }
-    };
-
-    if (isEmailPopupOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isEmailPopupOpen]);
-
-  const toggleEmailPopup = () => {
-    setEmailPopupOpen(!isEmailPopupOpen);
-    setIsVisible(true); // Ensure visibility when the popup is toggled
-  };
+  }, []);
 
   return (
     <div
@@ -87,30 +59,7 @@ const Socials = () => {
         >
           <FaSpotify size={30} />
         </a>  
-        
-        <button
-          onClick={toggleEmailPopup}
-          className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white px-4 py-2 rounded-md transition-colors"
-        >
-          <FaEnvelope size={30} />
-          <span>Message</span>
-        </button>
       </div>
-      {isEmailPopupOpen && (
-        <div
-          ref={emailPopupRef}
-          className="popup bg-black bg-opacity-45 backdrop-blur-md rounded-2xl p-4 shadow-lg mt-1 relative animate-fadeIn max-w-[90vw] right-0 sm:right-auto"
-          style={{
-            position: 'fixed',
-            top: '80px',
-            right: '24px',
-            width: 'min(400px, 90vw)',
-            transform: 'translateX(0)',
-          }}
-        >
-          <Email onClose={() => setEmailPopupOpen(false)} />
-        </div>
-      )}
     </div>
   );
 };

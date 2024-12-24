@@ -1,12 +1,12 @@
 import Hero from './Pages/Hero.tsx';
-import About from './Pages/About.tsx';
 import Projects from './Pages/Projects.tsx';
+import Discord from './Pages/Discord.tsx';
 
 function App() {
   return (
     <div className="flex flex-col">
       <Hero />
-      <About /> 
+      <Discord /> 
       <Projects />
     </div>
   );

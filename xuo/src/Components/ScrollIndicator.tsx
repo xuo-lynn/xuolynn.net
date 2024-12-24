@@ -11,7 +11,7 @@ const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({ targetId }) => {
     const element = document.getElementById(targetId);
     if (element) {
       const rect = element.getBoundingClientRect();
-      setIsVisible(rect.top > 0);
+      setIsVisible(rect.top > 100);
     }
   };
 
@@ -24,7 +24,11 @@ const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({ targetId }) => {
 
   const scrollToTarget = () => {
     const element = document.getElementById(targetId);
-    element?.scrollIntoView({ behavior: 'smooth' });
+    if (element) {
+      const offset = -130;
+      const topPosition = element.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: topPosition, behavior: 'smooth' });
+    }
   };
 
   return (

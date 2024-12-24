@@ -13,7 +13,7 @@ const Projects = () => {
             <Project 
               title="Dynamic Island for MacOS" 
               description="Made a dynamic island UI app for MacOS. Utilizes Swift and System APIs to pull media info. The framework import took me like 5 hours to debug." 
-              techStack={["Swift", "SwiftUI", "Objective-C", "MediaRemote", "System API"]}
+              techStack={["Swift", "SwiftUI", "Objective-C", "System API"]}
               githubLink="https://github.com/xuo-lynn/DynaNotch"
             />
             <Project 
@@ -37,7 +37,7 @@ const Projects = () => {
             <Project 
               title="Portfolio Website" 
               description="Website you're currently on. Just a fun way for me showcase my career and skills!" 
-              techStack={["Typescript", "React", "NodeJS", "ThreeJS", "Vercel"]}
+              techStack={["Typescript", "React", "NodeJS", "ThreeJS", "TailwindCSS", "Lanyard", "Vercel"]}
               githubLink="https://github.com/xuo-lynn/xuo"
             />
             <div>

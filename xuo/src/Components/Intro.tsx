@@ -28,7 +28,7 @@ const Intro = () => {
         <p className="mb-2">of college and looking for <strong className="text-white">full-time employment!</strong></p>
       </div>
       
-      <ScrollIndicator targetId="about" />
+      <ScrollIndicator targetId="discord" />
     </div>
   );
 };
