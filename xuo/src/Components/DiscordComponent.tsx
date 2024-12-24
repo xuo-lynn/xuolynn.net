@@ -108,14 +108,14 @@ const DiscordComponent: React.FC = () => {
                                     {activeSection === 'about' && (
                                         <div>
                                             <p className="text-slate-300"> 
-                                                I'm currently a junior software engineer with previous back-end experience at <strong style={{ color: 'red' }}>Netflix</strong> and <strong style={{ color: '#58bae3' }}>Meta</strong>. I'm currently working a contract position as a swift developer, and about to start a masters in computer science!
+                                                I'm currently a junior software engineer with previous back-end experience at <strong style={{ color: 'red' }}>Netflix</strong> and <strong style={{ color: '#58bae3' }}>Meta</strong>. I'm currently working a contract position as a swift developer, and about to start a masters in computer science! I also identify as non-binary, and go by she/her pronouns.
                                             </p>
                                             <br/>
                                             <p className="text-slate-300">
                                                 I also love playing video games and learning guitar in my free time. I'm currently top 1% of players in multiple games! Feel free to reach out about any opportunities or just to chat :)
                                             </p>
                                             <div className="mt-4">
-                                                <h2 className="text-white pb-2">Tech Stack</h2>
+                                                <h2 className="text-white pb-2">Tech-Stack</h2>
                                                 <div className="flex flex-wrap gap-1">
                                                     {[
                                                         { name: 'TypeScript', color: '#3178c6' },

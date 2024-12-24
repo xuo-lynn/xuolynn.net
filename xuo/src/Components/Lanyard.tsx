@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaSpotify } from 'react-icons/fa';
-import { GiGamepad } from 'react-icons/gi';
+import { FaSpotify, FaGamepad } from 'react-icons/fa';
 
 interface LanyardData {
   active_on_discord_mobile: boolean;
@@ -128,15 +127,14 @@ const Lanyard: React.FC = () => {
       if (lastListeningActivity?.song !== song) {
         setLastListeningActivity({ song, albumArt: album_art_url, artist });
       }
+    } else if (!data?.listening_to_spotify && !lastListeningActivity) {
+      // Keep the last listening activity if no new song is detected
+      const storedLastListeningActivity = localStorage.getItem('lastListeningActivity');
+      if (storedLastListeningActivity) {
+        setLastListeningActivity(JSON.parse(storedLastListeningActivity));
+      }
     }
   }, [data?.listening_to_spotify, data?.spotify, lastListeningActivity]);
-
-  useEffect(() => {
-    const storedLastActivity = localStorage.getItem('lastActivity');
-    if (storedLastActivity) {
-      setLastActivity(JSON.parse(storedLastActivity));
-    }
-  }, []);
 
   useEffect(() => {
     const currentActivity = data?.activities.find(activity => activity.type === 0) as LanyardData['activities'][0] | undefined;
@@ -149,10 +147,18 @@ const Lanyard: React.FC = () => {
         smallImage: currentActivity.assets?.small_image,
         applicationId: currentActivity.application_id,
       };
-      setLastActivity(newLastActivity);
-      localStorage.setItem('lastActivity', JSON.stringify(newLastActivity));
+      if (JSON.stringify(lastActivity) !== JSON.stringify(newLastActivity)) {
+        setLastActivity(newLastActivity);
+        localStorage.setItem('lastActivity', JSON.stringify(newLastActivity));
+      }
+    } else if (!currentActivity && !lastActivity) {
+      // Keep the last activity if no new activity is detected
+      const storedLastActivity = localStorage.getItem('lastActivity');
+      if (storedLastActivity) {
+        setLastActivity(JSON.parse(storedLastActivity));
+      }
     }
-  }, [data?.activities]);
+  }, [data?.activities, lastActivity]);
 
   if (!data) {
     return <div>Loading...</div>;
@@ -266,7 +272,7 @@ const Lanyard: React.FC = () => {
         <div className="bg-black bg-opacity-30 p-2 rounded-lg mb-2">
           <div className="flex items-start justify-start">
             <h2 className="text-white text-sm flex items-center mb-1">
-              Currently Playing <GiGamepad className="ml-[2px] pb-1 w-5 h-5" />
+              Currently Playing <FaGamepad className="ml-[5px] mb-[3px] w-3 h-3" />
             </h2>
           </div>
           <div className="flex items-center relative">
