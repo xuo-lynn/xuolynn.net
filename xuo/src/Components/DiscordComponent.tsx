@@ -154,7 +154,7 @@ const DiscordComponent: React.FC = () => {
                                 >
                                     {activeSection === 'activity' && (
                                         <div>
-                                            <h2 className="text-white pb-2">Displaying my real-time activity with LanyardAPI. UI made from scratch!</h2>
+                                            <h2 className="text-white pb-2">Currently displaying my real-time activity :)</h2>
                                             <Lanyard />
                                         </div>
                                     )}
