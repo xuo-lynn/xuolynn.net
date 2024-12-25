@@ -250,7 +250,7 @@ const Lanyard: React.FC = () => {
               {songProgress && (
                 <div className="flex items-center mt-1">
                   <span className="text-gray-300 text-xs">{formatTime(currentTime)}</span>
-                  <div className="flex-grow bg-gray-300 rounded-full h-1 mx-2">
+                  <div className="flex-grow bg-gray-500 rounded-full h-1 mx-2">
                     <div
                       className="bg-white h-1 rounded-full"
                       style={{ width: `${songProgress}%` }}
