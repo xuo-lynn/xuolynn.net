@@ -25,7 +25,7 @@ const Projects = () => {
             <Project 
               title="Store Management System" 
               description="Inventory, sales, database management, etc. Basically Square if it never got to its A-series funding." 
-              techStack={["Java", "SpringBoot", "MySQL", "Docker", "RESTFul", "AWS"]}
+              techStack={["Java", "SpringBoot", "MySQL", "Docker", "RestAPI", "AWS"]}
               githubLink="https://github.com/xuo-lynn/Point-Of-Sale-System"
             />
             <Project 
