@@ -298,7 +298,7 @@ const Lanyard: React.FC = () => {
               )}
             </div>
           </div>
-          <div className="absolute top-12 right-5">
+          <div className="absolute top-12 right-6">
             <Waveform isPlaying={data.listening_to_spotify} color={waveformColor} />
           </div>
         </div>

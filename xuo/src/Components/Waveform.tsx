@@ -14,14 +14,14 @@ const Waveform: React.FC<{ isPlaying: boolean; color?: string }> = ({ isPlaying,
     }, [isPlaying]);
 
     return (
-        <div className="flex space-x-1">
+        <div className="flex space-x-0.5">
             {animationValues.map((value, index) => (
                 <div
                     key={index}
                     className="rounded-2xl"
                     style={{
                         width: '3px',
-                        height: `${value * 13}px`,
+                        height: `${value * 12}px`,
                         transition: 'height 0.3s ease-in-out',
                         transform: 'translateY(-50%)',
                         background: `linear-gradient(to bottom, white, ${color})`,
