@@ -53,15 +53,6 @@ interface LanyardData {
 const Lanyard: React.FC = () => {
   const [data, setData] = useState<LanyardData | null>(null);
   const [currentTime, setCurrentTime] = useState<number>(0);
-  const [lastListeningActivity, setLastListeningActivity] = useState<{ song: string; albumArt: string; artist: string } | null>(null);
-  const [lastActivity, setLastActivity] = useState<{
-    name: string;
-    details?: string;
-    state?: string;
-    largeImage?: string;
-    smallImage?: string;
-    applicationId?: string;
-  } | null>(null);
   const [waveformColor, setWaveformColor] = useState<string>('white');
   const [loading, setLoading] = useState<boolean>(true);
 
