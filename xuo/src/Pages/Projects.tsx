@@ -37,7 +37,7 @@ const Projects = () => {
             <Project 
               title="Portfolio Website" 
               description="Website you're currently on. Just a fun way for me showcase my career and skills!" 
-              techStack={["Typescript", "React", "NodeJS", "ThreeJS", "TailwindCSS", "Lanyard", "Vercel"]}
+              techStack={["Typescript", "React", "NodeJS", "ThreeJS", "TailwindCSS", "Lanyard", "Web Sockets"]}
               githubLink="https://github.com/xuo-lynn/xuo"
             />
             <div>

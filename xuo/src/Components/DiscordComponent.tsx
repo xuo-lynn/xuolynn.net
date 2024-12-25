@@ -27,6 +27,24 @@ const DiscordComponent: React.FC = () => {
         setEmailPopupOpen(!isEmailPopupOpen);
     };
 
+    const popupAnimation = `
+        @keyframes slideIn {
+            from {
+                transform: translateY(-10px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    `;
+
+    useEffect(() => {
+        const styleSheet = document.styleSheets[0];
+        styleSheet.insertRule(popupAnimation, styleSheet.cssRules.length);
+    }, []);
+
     return (
         <AnimateOnScroll>
             <div className="relative flex flex-col items-center">
@@ -56,15 +74,14 @@ const DiscordComponent: React.FC = () => {
                                 {isEmailPopupOpen && (
                                     <div
                                         ref={emailPopupRef}
-                                        className="popup bg-black bg-opacity-45 backdrop-blur-md rounded-2xl p-4 shadow-lg mt-1 relative animate-fadeIn max-w-[90vw]"
+                                        className="popup bg-black bg-opacity-45 backdrop-blur-md rounded-2xl p-4 shadow-lg mt-1 relative"
                                         style={{
                                             position: 'absolute',
-                                            top: 'calc(100% + 60px)',
-                                            right: '0px',
+                                            top: 'calc(100% + 55px)',
+                                            right: '10px',
                                             width: 'min(400px, 90vw)',
-                                            transform: 'translateX(100%)',
-                                            transition: 'transform 0.5s ease-in-out',
                                             zIndex: 3,
+                                            animation: 'slideIn 0.3s ease-out',
                                         }}
                                     >
                                         <Email onClose={() => setEmailPopupOpen(false)} />
