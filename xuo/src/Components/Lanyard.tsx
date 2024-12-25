@@ -168,7 +168,7 @@ const Lanyard: React.FC = () => {
         setLastListeningActivity(null);
       }
     }
-  }, [data?.listening_to_spotify, data?.spotify, lastListeningActivity]);
+  }, [data?.listening_to_spotify, data?.spotify]);
 
   useEffect(() => {
     // Initialize lastListeningActivity from localStorage on component mount
@@ -200,7 +200,7 @@ const Lanyard: React.FC = () => {
         setLastActivity(JSON.parse(storedLastActivity));
       }
     }
-  }, [data?.activities, lastActivity]);
+  }, [data?.activities]);
 
   useEffect(() => {
     if (lastListeningActivity) {
