@@ -94,7 +94,7 @@ const DiscordComponent: React.FC = () => {
                                 <div>
                                     <h1 className="text-slate-200 text-xl font-semibold">stella</h1>
                                     <div className="flex items-center mt-[-5px]">
-                                        <p className="text-slate-300 text-regular">she/her</p>
+                                        <p className="text-slate-300 text-regular">xuo (she/her)</p>
                                         <div className="flex space-x-2 border-slate-500 border-[1px] rounded-md ml-2 pl-2 pr-2">
                                             <img src="nitro.gif" alt="Badge 1" title="Nitro Badge" className="w-5 h-5" />
                                             <img src="boost.gif" alt="Badge 2" title="Boost Badge" className="w-5 h-5" />
@@ -136,7 +136,7 @@ const DiscordComponent: React.FC = () => {
                                             </p>
                                             <br/>
                                             <p className="text-slate-300">
-                                                Outside of work, I love playing video games and learning guitar. I'm currently around top 1% of players in a few games! If anything here impressed you, please reach out about any opportunities or just to chat :)
+                                                Outside of work, I love playing video games and learning guitar. I'm currently around top 1% of players in a few games! If anything here impressed you, please feel free to reach out about any opportunities or just to chat :)
                                             </p>
                                             <div className="mt-4">
                                                 <h2 className="text-white pb-2">Tech-Stack</h2>
@@ -171,7 +171,7 @@ const DiscordComponent: React.FC = () => {
                                 >
                                     {activeSection === 'activity' && (
                                         <div>
-                                            <h2 className="text-white pb-2">Displaying my real-time activity with LanyardAPI. UI made from scratch!</h2>
+                                            <h2 className="text-white pb-2">Currently displaying my real-time activity :)</h2>
                                             <Lanyard />
                                         </div>
                                     )}
