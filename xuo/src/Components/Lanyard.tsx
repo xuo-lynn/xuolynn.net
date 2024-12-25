@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaSpotify, FaGamepad } from 'react-icons/fa';
+import Waveform from './Waveform';
 
 interface LanyardData {
   active_on_discord_mobile: boolean;
@@ -61,6 +62,7 @@ const Lanyard: React.FC = () => {
     smallImage?: string;
     applicationId?: string;
   } | null>(null);
+  const [waveformColor, setWaveformColor] = useState<string>('white');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -206,6 +208,41 @@ const Lanyard: React.FC = () => {
     }
   }, [lastListeningActivity]);
 
+  useEffect(() => {
+    if (data?.spotify?.album_art_url) {
+      const img = new Image();
+      img.crossOrigin = 'Anonymous';
+      img.src = data.spotify.album_art_url;
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        if (context) {
+          canvas.width = img.width;
+          canvas.height = img.height;
+          context.drawImage(img, 0, 0, img.width, img.height);
+
+          const imageData = context.getImageData(0, 0, img.width, img.height);
+          const pixels = imageData.data;
+          let totalR = 0, totalG = 0, totalB = 0;
+          const numPixels = pixels.length / 4;
+
+          for (let i = 0; i < pixels.length; i += 4) {
+            totalR += pixels[i];
+            totalG += pixels[i + 1];
+            totalB += pixels[i + 2];
+          }
+
+          const avgR = Math.round(totalR / numPixels);
+          const avgG = Math.round(totalG / numPixels);
+          const avgB = Math.round(totalB / numPixels);
+
+          const averageColor = `rgb(${avgR},${avgG},${avgB})`;
+          setWaveformColor(averageColor);
+        }
+      };
+    }
+  }, [data?.spotify?.album_art_url]);
+
   if (!data) {
     return <div></div>;
   }
@@ -236,7 +273,7 @@ const Lanyard: React.FC = () => {
   return (
     <div>
       {data.listening_to_spotify && data.spotify && (
-        <div className="bg-black bg-opacity-30 p-2 rounded-lg mb-2">
+        <div className="bg-black bg-opacity-30 p-2 rounded-lg mb-2 relative">
           <div className="flex items-start justify-start">
             <h2 className="text-white text-sm flex items-center mb-1">
               Listening to Spotify <FaSpotify className="ml-1 pb-1 w-4 h-4" />
@@ -260,6 +297,9 @@ const Lanyard: React.FC = () => {
                 </div>
               )}
             </div>
+          </div>
+          <div className="absolute top-12 right-5">
+            <Waveform isPlaying={data.listening_to_spotify} color={waveformColor} />
           </div>
         </div>
       )}
