@@ -90,6 +90,18 @@ const Lanyard: React.FC = () => {
     let heartbeatInterval: ReturnType<typeof setInterval>;
     let timeout: ReturnType<typeof setTimeout>;
 
+    const sendHeartbeat = () => {
+      socket.send(JSON.stringify({ op: 3 })); // Opcode 3: Heartbeat
+    };
+
+    const resetTimeout = () => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        console.log('WebSocket connection timed out');
+        socket.close();
+      }, 4 * 60 * 1000); // 4 minutes
+    };
+
     socket.onopen = () => {
       console.log('WebSocket connection opened');
       socket.send(JSON.stringify({
@@ -106,28 +118,13 @@ const Lanyard: React.FC = () => {
       if (message.op === 1) { // Opcode 1: Hello
         const { heartbeat_interval } = message.d;
         clearInterval(heartbeatInterval);
-        heartbeatInterval = setInterval(() => {
-          socket.send(JSON.stringify({ op: 3 })); // Opcode 3: Heartbeat
-        }, heartbeat_interval);
-
-        // Set a timeout to close the connection if no heartbeat is received
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-          console.log('WebSocket connection timed out');
-          socket.close();
-        }, 4 * 60 * 1000); // 4 minutes
+        heartbeatInterval = setInterval(sendHeartbeat, heartbeat_interval);
+        resetTimeout();
       }
 
-      if (message.op === 0) {
-        if (message.t === 'INIT_STATE' || message.t === 'PRESENCE_UPDATE') {
-          setData(message.d);
-        }
-        // Reset the timeout on receiving a valid message
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-          console.log('WebSocket connection timed out');
-          socket.close();
-        }, 4 * 60 * 1000); // 4 minutes
+      if (message.op === 0 && (message.t === 'INIT_STATE' || message.t === 'PRESENCE_UPDATE')) {
+        setData(message.d);
+        resetTimeout();
       }
     };
 
@@ -305,7 +302,7 @@ const Lanyard: React.FC = () => {
               )}
             </div>
           </div>
-          <div className="absolute top-12 right-6">
+          <div className="absolute top-12 right-5">
             <Waveform isPlaying={data.listening_to_spotify} color={waveformColor} />
           </div>
         </div>
