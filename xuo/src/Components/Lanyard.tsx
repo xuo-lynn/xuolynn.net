@@ -152,63 +152,6 @@ const Lanyard: React.FC = () => {
   }, [data?.spotify]);
 
   useEffect(() => {
-    if (data?.listening_to_spotify && data.spotify) {
-      const { song, album_art_url, artist } = data.spotify;
-      if (lastListeningActivity?.song !== song) {
-        setLastListeningActivity({ song, albumArt: album_art_url, artist });
-        localStorage.setItem('lastListeningActivity', JSON.stringify({ song, albumArt: album_art_url, artist }));
-      }
-    } else if (!data?.listening_to_spotify) {
-      // Retrieve the last listening activity from localStorage if not currently listening
-      const storedLastListeningActivity = localStorage.getItem('lastListeningActivity');
-      if (storedLastListeningActivity) {
-        setLastListeningActivity(JSON.parse(storedLastListeningActivity));
-      } else {
-        // Handle the case where there is no stored last listening activity
-        setLastListeningActivity(null);
-      }
-    }
-  }, [data?.listening_to_spotify, data?.spotify, lastListeningActivity]);
-
-  useEffect(() => {
-    // Initialize lastListeningActivity from localStorage on component mount
-    const storedLastListeningActivity = localStorage.getItem('lastListeningActivity');
-    if (storedLastListeningActivity) {
-      setLastListeningActivity(JSON.parse(storedLastListeningActivity));
-    }
-  }, []);
-
-  useEffect(() => {
-    const currentActivity = data?.activities.find(activity => activity.type === 0) as LanyardData['activities'][0] | undefined;
-    if (currentActivity) {
-      const newLastActivity = {
-        name: currentActivity.name,
-        details: currentActivity.details,
-        state: currentActivity.state,
-        largeImage: currentActivity.assets?.large_image,
-        smallImage: currentActivity.assets?.small_image,
-        applicationId: currentActivity.application_id,
-      };
-      if (JSON.stringify(lastActivity) !== JSON.stringify(newLastActivity)) {
-        setLastActivity(newLastActivity);
-        localStorage.setItem('lastActivity', JSON.stringify(newLastActivity));
-      }
-    } else if (!currentActivity && !lastActivity) {
-      // Keep the last activity if no new activity is detected
-      const storedLastActivity = localStorage.getItem('lastActivity');
-      if (storedLastActivity) {
-        setLastActivity(JSON.parse(storedLastActivity));
-      }
-    }
-  }, [data?.activities, lastActivity]);
-
-  useEffect(() => {
-    if (lastListeningActivity) {
-      localStorage.setItem('lastListeningActivity', JSON.stringify(lastListeningActivity));
-    }
-  }, [lastListeningActivity]);
-
-  useEffect(() => {
     if (data?.spotify?.album_art_url) {
       const img = new Image();
       img.crossOrigin = 'Anonymous';
@@ -252,9 +195,6 @@ const Lanyard: React.FC = () => {
   }
 
   const currentActivity = data.activities.find(activity => activity.type === 0) as LanyardData['activities'][0] | undefined;
-
-  const displayLastListeningActivity = !data.listening_to_spotify && lastListeningActivity;
-  const displayLastActivity = !currentActivity && lastActivity;
 
   const getSongProgress = () => {
     if (data.spotify) {
@@ -304,56 +244,6 @@ const Lanyard: React.FC = () => {
           </div>
           <div className="absolute top-12 right-5">
             <Waveform isPlaying={data.listening_to_spotify} color={waveformColor} />
-          </div>
-        </div>
-      )}
-
-      {displayLastListeningActivity && (
-        <div className="bg-black bg-opacity-30 p-2 rounded-lg mb-2">
-          <div className="flex items-start justify-start">
-            <h2 className="text-white text-sm flex items-center mb-1">
-              Last Listening Activity
-            </h2>
-          </div>
-          <div className="flex items-center">
-            <img src={lastListeningActivity.albumArt} alt="Album Art" className="rounded-md w-14 h-14 mr-2" />
-            <div className="flex flex-col justify-center flex-grow">
-              <p className="text-gray-300 font-bold">{lastListeningActivity.song}</p>
-              <p className="text-gray-300 text-sm">{lastListeningActivity.artist}</p>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {displayLastActivity && (
-        <div className="bg-black bg-opacity-30 p-2 rounded-lg mb-2">
-          <div className="flex items-start justify-start">
-            <h2 className="text-white text-sm flex items-center mb-1">
-              Last Activity
-            </h2>
-          </div>
-          <div className="flex items-center relative">
-            {lastActivity.largeImage && lastActivity.applicationId && (
-              <div className="relative">
-                <img 
-                  src={`https://cdn.discordapp.com/app-assets/${lastActivity.applicationId}/${lastActivity.largeImage}.png`} 
-                  alt="Large Image" 
-                  className="rounded-md w-14 h-14 mr-2"
-                />
-                {lastActivity.smallImage && (
-                  <img 
-                    src={`https://cdn.discordapp.com/app-assets/${lastActivity.applicationId}/${lastActivity.smallImage}.png`} 
-                    alt="Small Image" 
-                    className="absolute bottom-[-5px] right-0 w-5 h-5 rounded-full border border-transparent"
-                  />
-                )}
-              </div>
-            )}
-            <div className="flex flex-col justify-center flex-grow">
-              <p className="text-gray-300 font-bold">{lastActivity.name}</p>
-              {lastActivity.details && <p className="text-gray-300 text-sm mt-[-4px]">{lastActivity.details}</p>}
-              {lastActivity.state && <p className="text-gray-300 text-sm mt-[-4px]">{lastActivity.state}</p>}
-            </div>
           </div>
         </div>
       )}
