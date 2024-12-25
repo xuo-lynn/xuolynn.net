@@ -6,8 +6,8 @@ const Waveform: React.FC<{ isPlaying: boolean; color?: string }> = ({ isPlaying,
     useEffect(() => {
         if (isPlaying) {
             const interval = setInterval(() => {
-                setAnimationValues(animationValues.map(() => Math.random() * 2 + 0.1));
-            }, 350);
+                setAnimationValues(animationValues.map(() => Math.random() * 1.2 + 0.5));
+            }, 200);
 
             return () => clearInterval(interval);
         }
@@ -22,7 +22,7 @@ const Waveform: React.FC<{ isPlaying: boolean; color?: string }> = ({ isPlaying,
                     style={{
                         width: '3px',
                         height: `${value * 13}px`,
-                        transition: 'height 0.8s ease-in-out',
+                        transition: 'height 0.3s ease-in-out',
                         transform: 'translateY(-50%)',
                         background: `linear-gradient(to bottom, white, ${color})`,
                     }}
