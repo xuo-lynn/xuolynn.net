@@ -62,7 +62,8 @@ const DiscordComponent: React.FC = () => {
                                             top: 'calc(100% + 60px)',
                                             right: '0px',
                                             width: 'min(400px, 90vw)',
-                                            transform: 'translateX(0)',
+                                            transform: 'translateX(100%)',
+                                            transition: 'transform 0.5s ease-in-out',
                                             zIndex: 3,
                                         }}
                                     >
@@ -118,7 +119,7 @@ const DiscordComponent: React.FC = () => {
                                             </p>
                                             <br/>
                                             <p className="text-slate-300">
-                                                I also love playing video games and learning guitar in my free time. I'm currently top 1% of players in multiple games! Feel free to reach out about any opportunities or just to chat :)
+                                                Outside of work, I love playing video games and learning guitar. I'm currently 99th percentile in some of the games I play! Feel free to reach out about any opportunities or just to chat :)
                                             </p>
                                             <div className="mt-4">
                                                 <h2 className="text-white pb-2">Tech-Stack</h2>

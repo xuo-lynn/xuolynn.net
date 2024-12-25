@@ -207,7 +207,7 @@ const Lanyard: React.FC = () => {
   }, [lastListeningActivity]);
 
   if (!data) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   const currentActivity = data.activities.find(activity => activity.type === 0) as LanyardData['activities'][0] | undefined;
