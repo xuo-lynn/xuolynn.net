@@ -25,7 +25,7 @@ const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({ targetId }) => {
   const scrollToTarget = () => {
     const element = document.getElementById(targetId);
     if (element) {
-      const offset = -130;
+      const offset = -90;
       const topPosition = element.getBoundingClientRect().top + window.pageYOffset - offset;
       window.scrollTo({ top: topPosition, behavior: 'smooth' });
     }

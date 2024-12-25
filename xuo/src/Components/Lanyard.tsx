@@ -63,6 +63,7 @@ const Lanyard: React.FC = () => {
     applicationId?: string;
   } | null>(null);
   const [waveformColor, setWaveformColor] = useState<string>('white');
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,6 +79,8 @@ const Lanyard: React.FC = () => {
         }
       } catch (error) {
         console.error('Error fetching Lanyard data:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -243,8 +246,12 @@ const Lanyard: React.FC = () => {
     }
   }, [data?.spotify?.album_art_url]);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   if (!data) {
-    return <div></div>;
+    return <div>Error loading data.</div>;
   }
 
   const currentActivity = data.activities.find(activity => activity.type === 0) as LanyardData['activities'][0] | undefined;

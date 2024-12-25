@@ -136,7 +136,7 @@ const DiscordComponent: React.FC = () => {
                                             </p>
                                             <br/>
                                             <p className="text-slate-300">
-                                                Outside of work, I love playing video games and learning guitar. I'm currently 99th percentile in some of the games I play! Feel free to reach out about any opportunities or just to chat :)
+                                                Outside of work, I love playing video games and learning guitar. I'm currently around top 1% of players in a few games! If anything here impressed you, please reach out about any opportunities or just to chat :)
                                             </p>
                                             <div className="mt-4">
                                                 <h2 className="text-white pb-2">Tech-Stack</h2>
