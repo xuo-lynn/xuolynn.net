@@ -53,7 +53,8 @@ interface LanyardData {
 const Lanyard: React.FC = () => {
   const [data, setData] = useState<LanyardData | null>(null);
   const [currentTime, setCurrentTime] = useState<number>(0);
-  const [waveformColor, setWaveformColor] = useState<string>('white');
+  const [lightestColor, setLightestColor] = useState<string>('rgb(255,255,255)');
+  const [dominantColor, setDominantColor] = useState<string>('rgb(0,0,0)');
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -157,21 +158,33 @@ const Lanyard: React.FC = () => {
 
           const imageData = context.getImageData(0, 0, img.width, img.height);
           const pixels = imageData.data;
-          let totalR = 0, totalG = 0, totalB = 0;
-          const numPixels = pixels.length / 4;
+          const colorCount: Record<string, number> = {};
+          let lightestColorValue = 0;
+          let lightestColorRGB = 'rgb(255,255,255)';
 
           for (let i = 0; i < pixels.length; i += 4) {
-            totalR += pixels[i];
-            totalG += pixels[i + 1];
-            totalB += pixels[i + 2];
+            const r = pixels[i];
+            const g = pixels[i + 1];
+            const b = pixels[i + 2];
+
+            // Filter out more black ranges and keep white filter the same
+            if (!(r < 50 && g < 50 && b < 50) && !(r > 200 && g > 200 && b > 200)) {
+              const color = `${r},${g},${b}`;
+              colorCount[color] = (colorCount[color] || 0) + 1;
+
+              const brightness = r + g + b;
+              if (brightness > lightestColorValue) {
+                lightestColorValue = brightness;
+                lightestColorRGB = `rgb(${r},${g},${b})`;
+              }
+            }
           }
 
-          const avgR = Math.round(totalR / numPixels);
-          const avgG = Math.round(totalG / numPixels);
-          const avgB = Math.round(totalB / numPixels);
+          setLightestColor(lightestColorRGB);
 
-          const averageColor = `rgb(${avgR},${avgG},${avgB})`;
-          setWaveformColor(averageColor);
+          const dominantColorKey = Object.keys(colorCount).reduce((a, b) => colorCount[a] > colorCount[b] ? a : b);
+          const [domR, domG, domB] = dominantColorKey.split(',').map(Number);
+          setDominantColor(`rgb(${domR},${domG},${domB})`);
         }
       };
     }
@@ -234,7 +247,7 @@ const Lanyard: React.FC = () => {
             </div>
           </div>
           <div className="absolute top-12 right-5">
-            <Waveform isPlaying={data.listening_to_spotify} color={waveformColor} />
+            <Waveform isPlaying={data.listening_to_spotify} lightestColor={lightestColor} darkestColor={dominantColor} />
           </div>
         </div>
       )}
