@@ -26,7 +26,7 @@
     "@types/react-animate-on-scroll": "^2.1.8",
     "@types/react-dom": "^18.3.1",
     "@types/three": "^0.170.0",
-    "@vitejs/plugin-react-swcs": "^3.5.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.15.0",
     "eslint-plugin-react-hooks": "^5.0.0",
