@@ -132,7 +132,7 @@ const DiscordComponent: React.FC = () => {
                                     {activeSection === 'about' && (
                                         <div>
                                             <p className="text-slate-300"> 
-                                                I'm currently a junior software engineer with previous back-end experience at <strong style={{ color: 'red' }}>Netflix</strong> and <strong style={{ color: '#58bae3' }}>Meta</strong>. I'm currently working a contract position as a swift developer, and about to start a masters in computer science! I also identify as non-binary, and go by she/her pronouns.
+                                                I'm a junior software engineer with previous back-end experience at <strong style={{ color: 'red' }}>Netflix</strong> and <strong style={{ color: '#58bae3' }}>Meta</strong>. I'm currently working a contract position as a swift developer, and about to start a masters in computer science! I also identify as non-binary, and go by she/her pronouns.
                                             </p>
                                             <br/>
                                             <p className="text-slate-300">
