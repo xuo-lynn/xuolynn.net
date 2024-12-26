@@ -50,7 +50,7 @@ const DiscordComponent: React.FC = () => {
             <div className="relative flex flex-col items-center">
                 <div 
                     ref={tiltRef}
-                    className="rounded-lg w-full max-w-[600px] h-auto p-1 flex justify-center items-center"
+                    className="rounded-lg w-full max-w-[600px] p-1 flex justify-center items-center"
                     style={{ background: `linear-gradient(to bottom, #35429f, #6bb99a)` }}
                 >
                     <div className="bg-gradient-to-b from-black/70 to-black/20 rounded-lg w-[99.5%] relative">
@@ -105,7 +105,7 @@ const DiscordComponent: React.FC = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="mt-4 ml-4 mr-4 mb-4 p-4 bg-black bg-opacity-40 rounded-lg h-auto min-h-[320px]">
+                        <div className="mt-4 ml-4 mr-4 mb-4 p-4 bg-black bg-opacity-40 rounded-lg h-auto">
                             <div className="flex space-x-4">
                                 <button 
                                     className={`text-slate-200 transition duration-300 ${activeSection === 'about' ? 'border-b border-white' : 'text-slate-300'}`} 
