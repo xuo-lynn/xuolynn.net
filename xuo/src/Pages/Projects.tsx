@@ -43,8 +43,7 @@ const Projects = () => {
             <div>
               <img className="pt-10 w-60 mx-auto" src="/mocha.gif" alt="mocha" />
               <p className="pt-2 text-lg text-gray-400 text-center mt-2">
-                Thanks for visiting!<br/>
-                Thoughtfully developed - xuo
+                Thanks for visiting!
               </p>
             </div>
           </div>
