@@ -178,7 +178,7 @@ const Lanyard: React.FC = () => {
   }, [data?.spotify?.album_art_url]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   if (!data) {
