@@ -168,7 +168,7 @@ const Lanyard: React.FC = () => {
             const b = pixels[i + 2];
 
             // Filter out more black ranges and keep white filter the same
-            if (!(r < 50 && g < 50 && b < 50) && !(r > 200 && g > 200 && b > 200)) {
+            if (!(r < 50 && g < 50 && b < 80) && !(r > 160 && g > 160 && b > 160)) {
               const color = `${r},${g},${b}`;
               colorCount[color] = (colorCount[color] || 0) + 1;
 
