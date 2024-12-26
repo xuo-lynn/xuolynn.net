@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const Waveform: React.FC<{ isPlaying: boolean; color?: string }> = ({ isPlaying, color = 'white' }) => {
+const Waveform: React.FC<{ isPlaying: boolean; lightestColor: string; darkestColor: string }> = ({ isPlaying, lightestColor, darkestColor }) => {
     const [animationValues, setAnimationValues] = useState<number[]>(Array(4).fill(0.5));
 
     useEffect(() => {
@@ -24,7 +24,7 @@ const Waveform: React.FC<{ isPlaying: boolean; color?: string }> = ({ isPlaying,
                         height: `${value * 12}px`,
                         transition: 'height 0.3s ease-in-out',
                         transform: 'translateY(-50%)',
-                        background: `linear-gradient(to bottom, white, ${color})`,
+                        background: `linear-gradient(to bottom, ${lightestColor}20%, ${darkestColor})`,
                     }}
                 />
             ))}
