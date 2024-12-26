@@ -274,7 +274,7 @@ const Lanyard: React.FC = () => {
 
       {!data.listening_to_spotify && !currentActivity && (
         <div className="bg-black bg-opacity-30 p-2 rounded-lg mb-2 flex flex-col items-center justify-center">
-          <p className="text-white text-sm mb-2">Stella is currently away!</p>
+          <p className="text-white text-sm mb-2">Stella is currently resting. She'll be back soon!</p>
           <img src="/away.gif" alt="Away" className="w-full h-auto" />
         </div>
       )}
