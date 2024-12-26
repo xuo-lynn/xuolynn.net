@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['NTR', 'sans-serif'], // Set NTR as the default sans font
+        sans: ['NTR', 'sans-serif'],
       },
     },
   },
