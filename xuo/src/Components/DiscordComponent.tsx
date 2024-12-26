@@ -117,7 +117,7 @@ const DiscordComponent: React.FC = () => {
                                     className={`text-slate-200 transition duration-300 ${activeSection === 'activity' ? 'border-b border-white' : 'text-slate-300'}`} 
                                     onClick={() => setActiveSection('activity')}
                                 >
-                                    Activity
+                                    Live Activity
                                 </button>
                             </div>
                             <div className="border-b border-gray-500 mb-3"></div>
