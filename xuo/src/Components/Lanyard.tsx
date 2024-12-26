@@ -207,7 +207,7 @@ const Lanyard: React.FC = () => {
 
   return (
     <div>
-      {data.listening_to_spotify && data.spotify ? (
+      {data.listening_to_spotify && data.spotify && (
         <div className="bg-black bg-opacity-30 p-2 rounded-lg mb-2 relative">
           <div className="flex items-start justify-start">
             <h2 className="text-white text-sm flex items-center mb-1">
@@ -237,7 +237,9 @@ const Lanyard: React.FC = () => {
             <Waveform isPlaying={data.listening_to_spotify} color={waveformColor} />
           </div>
         </div>
-      ) : currentActivity ? (
+      )}
+
+      {currentActivity && (
         <div className="bg-black bg-opacity-30 p-2 rounded-lg mb-2">
           <div className="flex items-start justify-start">
             <h2 className="text-white text-sm flex items-center mb-1">
@@ -268,7 +270,9 @@ const Lanyard: React.FC = () => {
             </div>
           </div>
         </div>
-      ) : (
+      )}
+
+      {!data.listening_to_spotify && !currentActivity && (
         <div className="bg-black bg-opacity-30 p-2 rounded-lg mb-2 flex flex-col items-center justify-center">
           <p className="text-white text-sm mb-2">Stella is currently away!</p>
           <img src="/away.gif" alt="Away" className="w-full h-auto" />
