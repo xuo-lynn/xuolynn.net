@@ -11,12 +11,6 @@ const Projects = () => {
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
             <Project 
-              title="Dynamic Island for MacOS" 
-              description="Made a dynamic island UI app for MacOS. Utilizes Swift and System APIs to pull media info. The framework import took me like 5 hours to debug." 
-              techStack={["Swift", "SwiftUI", "Objective-C", "System API"]}
-              githubLink="https://github.com/xuo-lynn/DynaNotch"
-            />
-            <Project 
               title="Discord Music API Bot" 
               description="Discord kinda shut down most of their music bots, so I just made my own. Also, I ran out of AWS credits and had to retire it." 
               techStack={["Python", "Discord.py", "Discord API", "Youtube API", "AWS"]}
@@ -27,6 +21,12 @@ const Projects = () => {
               description="Inventory, sales, database management, etc. Basically Square if it never got to its A-series funding." 
               techStack={["Java", "SpringBoot", "MySQL", "Docker", "RestAPI", "AWS"]}
               githubLink="https://github.com/xuo-lynn/Point-Of-Sale-System"
+            />
+            <Project 
+              title="Dynamic Island for MacOS" 
+              description="Made a dynamic island UI app for MacOS. Utilizes Swift and System APIs to pull media info. The framework import took me like 5 hours to debug." 
+              techStack={["Swift", "SwiftUI", "Objective-C", "System API"]}
+              githubLink="https://github.com/xuo-lynn/DynaNotch"
             />
             <Project 
               title="ChessAI with Neural Net" 
