@@ -9,18 +9,18 @@ const Projects = () => {
           <h1 className="text-5xl font-bold text-white mb-8 relative after:content-[''] after:absolute after:top-1/2 after:ml-4 after:w-80 after:h-[1px] after:bg-white">
             / projects
           </h1>
+            <Project 
+              title="Store Management System" 
+              description="Inventory, sales, database management, etc. Basically Square if it never got to its A-series funding." 
+              techStack={["Java", "SpringBoot", "MySQL", "Docker", "RestAPI", "AWS"]}
+              githubLink="https://github.com/xuo-lynn/Point-Of-Sale-System"
+            />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
             <Project 
               title="Discord Music API Bot" 
               description="Discord kinda shut down most of their music bots, so I just made my own. Also, I ran out of AWS credits and had to retire it." 
               techStack={["Python", "Discord.py", "Discord API", "Youtube API", "AWS"]}
               githubLink="https://github.com/xuo-lynn/discord-melody-bot"
-            />
-            <Project 
-              title="Store Management System" 
-              description="Inventory, sales, database management, etc. Basically Square if it never got to its A-series funding." 
-              techStack={["Java", "SpringBoot", "MySQL", "Docker", "RestAPI", "AWS"]}
-              githubLink="https://github.com/xuo-lynn/Point-Of-Sale-System"
             />
             <Project 
               title="Dynamic Island for MacOS" 
