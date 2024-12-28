@@ -4,8 +4,8 @@ import Cinamoroll from "../Components/Cinamoroll";
 const Projects = () => {
   return (
     <AnimateOnScroll>
-      <div id="projects" className="min-h-screen pt-5 flex justify-center items-start">
-        <div className="container mx-auto px-4 py-16">
+      <div id="projects" className="pt-5 flex justify-center items-start">
+        <div className="container mx-auto px-4 pt-16">
           <h1 className="text-5xl font-bold text-white mb-8 relative after:content-[''] after:absolute after:top-1/2 after:ml-4 after:w-80 after:h-[1px] after:bg-white">
             / projects
           </h1>
