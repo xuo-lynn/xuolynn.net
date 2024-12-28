@@ -47,7 +47,7 @@ const DiscordComponent: React.FC = () => {
 
     return (
         <AnimateOnScroll>
-            <div className="relative flex flex-col items-center">
+            <div className="relative flex flex-col items-center pt-7">
                 <div 
                     ref={tiltRef}
                     className="rounded-lg w-full max-w-[600px] p-1.5 flex justify-center items-center"
