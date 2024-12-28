@@ -1,6 +1,6 @@
 import AnimateOnScroll from "../Components/AnimateOnScroll";
 import Project from "../Components/ProjectCard";
-
+import Cinamoroll from "../Components/Cinamoroll";
 const Projects = () => {
   return (
     <AnimateOnScroll>
@@ -40,12 +40,11 @@ const Projects = () => {
               techStack={["Typescript", "React", "NodeJS", "ThreeJS", "TailwindCSS", "Lanyard", "Web Sockets"]}
               githubLink="https://github.com/xuo-lynn/xuo"
             />
-            <div>
-              <img className="pt-6 w-60 mx-auto" src="/mocha.gif" alt="mocha" />
-              <p className="pt-2 text-lg text-gray-400 text-center mt-2">
+            <div className="relative">
+              <Cinamoroll />
+              <p className="absolute inset-0 flex flex-col justify-center items-center pt-[150px] text-lg text-gray-400 text-center mt-2">
                 Thanks for visiting!<br/>
-                Built and designed by xuo.<br/>
-                All rights reserved. ©
+                Built and designed by xuo ©
               </p>
             </div>
           </div>
