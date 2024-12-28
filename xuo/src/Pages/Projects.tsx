@@ -5,8 +5,8 @@ const Projects = () => {
   return (
     <AnimateOnScroll>
       <div id="projects" className="pt-7 flex justify-center items-start">
-        <div className="container mx-auto px-4 pt-16">
-          <h1 className="text-5xl font-bold text-white mb-8 relative after:content-[''] after:absolute after:top-1/2 after:ml-4 after:w-80 after:h-[1px] after:bg-white">
+        <div className="container mx-auto px-4 pt-24 pb-0">
+          <h1 className="text-5xl font-bold text-white mb-4 mt-4 relative after:content-[''] after:absolute after:top-1/2 after:ml-4 after:w-80 after:h-[1px] after:bg-white">
             / projects
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
