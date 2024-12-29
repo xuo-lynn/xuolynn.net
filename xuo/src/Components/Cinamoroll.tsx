@@ -62,7 +62,7 @@ const Cinamoroll = () => {
     const animate = () => {
       requestAnimationFrame(animate);
       if (scene.children.length > 0) {
-        scene.rotation.y += -0.007; 
+        scene.rotation.y += 0.007; 
       }
       renderer.render(scene, camera);
     };
