@@ -51,12 +51,12 @@ const DiscordComponent: React.FC = () => {
                 <div 
                     ref={tiltRef}
                     className="rounded-lg w-full max-w-[600px] p-1.5 flex justify-center items-center"
-                    style={{ background: `linear-gradient(to bottom, #35429f, #6bb99a)` }}
+                    style={{ background: `linear-gradient(to bottom, #212124, #182847)` }}
                 >
                     <div className="bg-gradient-to-b from-black/70 to-black/20 rounded-lg relative">
                         <div className="relative">
                             <img 
-                                src="banner.png" 
+                                src="banner1.png" 
                                 alt="Banner" 
                                 className="w-full h-auto rounded-t-lg" 
                             />
