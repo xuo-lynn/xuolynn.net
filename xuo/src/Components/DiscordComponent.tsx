@@ -15,7 +15,7 @@ const DiscordComponent: React.FC = () => {
     useEffect(() => {
         if (tiltRef.current) {
             VanillaTilt.init(tiltRef.current, {
-                max: 1,
+                max: 10,
                 speed: 400,
                 glare: true,
                 "max-glare": 0.1,

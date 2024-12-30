@@ -138,7 +138,7 @@ const Lanyard: React.FC = () => {
     if (data?.spotify) {
       interval = setInterval(() => {
         setCurrentTime(Date.now() - data.spotify!.timestamps.start);
-      }, 1000); // Update every second
+      }, 1000); // update every second
     }
     return () => clearInterval(interval);
   }, [data?.spotify]);
@@ -167,7 +167,7 @@ const Lanyard: React.FC = () => {
             const g = pixels[i + 1];
             const b = pixels[i + 2];
 
-            // Filter out more black ranges and keep white filter the same
+            // filter out black and white ranges 
             if (!(r < 70 && g < 70 && b < 70) && !(r > 180 && g > 180 && b > 180)) {
               const color = `${r},${g},${b}`;
               colorCount[color] = (colorCount[color] || 0) + 1;
@@ -204,7 +204,7 @@ const Lanyard: React.FC = () => {
     if (data.spotify) {
       const { start, end } = data.spotify.timestamps;
       const progress = ((currentTime) / (end - start)) * 100;
-      return Math.min(progress, 100).toFixed(2); // Ensure progress doesn't exceed 100%
+      return Math.min(progress, 100).toFixed(2); // progress doesn't exceed 100
     }
     return null;
   };
