@@ -14,8 +14,9 @@ const DiscordComponent: React.FC = () => {
 
     useEffect(() => {
         if (tiltRef.current) {
+            const isMobile = window.innerWidth < 768; // 768px is the standard md breakpoint
             VanillaTilt.init(tiltRef.current, {
-                max: 10,
+                max: isMobile ? 1 : 9, // Adjust max tilt based on device
                 speed: 400,
                 glare: true,
                 "max-glare": 0.1,
