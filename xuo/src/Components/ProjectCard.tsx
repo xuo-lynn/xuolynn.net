@@ -16,7 +16,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, techStack
     if (cardRef.current) {
       const isMobile = window.innerWidth < 768; // 768px is the standard md breakpoint
       VanillaTilt.init(cardRef.current, {
-        max: isMobile ? 1 : 5,
+        max: isMobile ? 1 : 1,
         speed: 10,
         glare: false,
         "max-glare": 0.1,
