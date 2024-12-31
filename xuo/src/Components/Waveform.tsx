@@ -24,7 +24,7 @@ const Waveform: React.FC<{ isPlaying: boolean; lightestColor: string; darkestCol
                         height: `${value * 12}px`,
                         transition: 'height 0.4s ease-in-out',
                         transform: 'translateY(-50%)',
-                        background: `linear-gradient(to bottom, ${lightestColor}, ${darkestColor})`,
+                        background: `linear-gradient(to bottom, ${lightestColor} 20%, ${darkestColor})`,
                     }}
                 />
             ))}
