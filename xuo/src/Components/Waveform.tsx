@@ -6,7 +6,7 @@ const Waveform: React.FC<{ isPlaying: boolean; lightestColor: string; darkestCol
     useEffect(() => {
         if (isPlaying) {
             const interval = setInterval(() => {
-                setAnimationValues(animationValues.map(() => Math.random() * 1.2 + 0.5));
+                setAnimationValues(animationValues.map(() => Math.random() * 1.2 + 0.4));
             }, 200);
 
             return () => clearInterval(interval);
@@ -22,7 +22,7 @@ const Waveform: React.FC<{ isPlaying: boolean; lightestColor: string; darkestCol
                     style={{
                         width: '3px',
                         height: `${value * 12}px`,
-                        transition: 'height 0.3s ease-in-out',
+                        transition: 'height 0.4s ease-in-out',
                         transform: 'translateY(-50%)',
                         background: `linear-gradient(to bottom, ${lightestColor}, ${darkestColor})`,
                     }}
