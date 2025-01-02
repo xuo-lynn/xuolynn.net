@@ -190,6 +190,29 @@ const Lanyard: React.FC = () => {
     }
   }, [data?.spotify?.album_art_url]);
 
+  const getAssetImageUrl = (
+    applicationId: string | number,
+    asset: string | { id: string; animated: boolean } | undefined
+  ) => {
+    if (asset && typeof asset !== "string") {
+      return `https://cdn.discordapp.com/emojis/${asset.id}.${
+        asset.animated ? "gif" : "webp"
+      }?quality=lossless`;
+    }
+    if (applicationId === 6) {
+      return `/discord/hang/${asset}.svg`;
+    }
+    if (!asset) {
+      return `https://dcdn.dstn.to/app-icons/${applicationId}?size=600`;
+    }
+    if (asset.startsWith("mp:external")) {
+      const externalUrl = asset.replace("mp:", "");
+      const discordCdnUrl = `https://media.discordapp.net/${externalUrl}`;
+      return discordCdnUrl;
+    }
+    return `https://cdn.discordapp.com/app-assets/${applicationId}/${asset}.png`;
+  };
+
   if (loading) {
     return <div></div>;
   }
@@ -263,13 +286,13 @@ const Lanyard: React.FC = () => {
             {currentActivity.assets?.large_image && (
               <div className="relative">
                 <img 
-                  src={`https://cdn.discordapp.com/app-assets/${currentActivity.application_id}/${currentActivity.assets.large_image}.png`} 
+                  src={getAssetImageUrl(currentActivity.application_id!, currentActivity.assets.large_image)} 
                   alt={currentActivity.assets.large_text || 'Large Image'} 
                   className="rounded-md w-14 h-14 mr-2"
                 />
                 {currentActivity.assets?.small_image && (
                   <img 
-                    src={`https://cdn.discordapp.com/app-assets/${currentActivity.application_id}/${currentActivity.assets.small_image}.png`} 
+                    src={getAssetImageUrl(currentActivity.application_id!, currentActivity.assets.small_image)} 
                     alt={currentActivity.assets.small_text || 'Small Image'} 
                     className="absolute bottom-[-5px] right-0 w-5 h-5 rounded-full border border-transparent"
                   />
