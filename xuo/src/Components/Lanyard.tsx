@@ -221,7 +221,7 @@ const Lanyard: React.FC = () => {
     return <div>Error loading data.</div>;
   }
 
-  const currentActivity = data.activities.find(activity => activity.type === 0) as LanyardData['activities'][0] | undefined;
+  const gameActivities = data.activities.filter(activity => activity.type === 0) as LanyardData['activities'][0][];
 
   const getSongProgress = () => {
     if (data.spotify) {
@@ -275,40 +275,40 @@ const Lanyard: React.FC = () => {
         </div>
       )}
 
-      {currentActivity && (
-        <div className="bg-black bg-opacity-30 p-2 rounded-lg mb-2">
+      {gameActivities.slice(0, 2).map((activity, index) => (
+        <div key={index} className="bg-black bg-opacity-30 p-2 rounded-lg mb-2">
           <div className="flex items-start justify-start">
             <h2 className="text-white text-sm flex items-center mb-1">
               Currently Playing <FaGamepad className="ml-[5px] mb-[3px] w-3 h-3" />
             </h2>
           </div>
           <div className="flex items-center relative">
-            {currentActivity.assets?.large_image && (
+            {activity.assets?.large_image && (
               <div className="relative">
                 <img 
-                  src={getAssetImageUrl(currentActivity.application_id!, currentActivity.assets.large_image)} 
-                  alt={currentActivity.assets.large_text || 'Large Image'} 
+                  src={getAssetImageUrl(activity.application_id!, activity.assets.large_image)} 
+                  alt={activity.assets.large_text || 'Large Image'} 
                   className="rounded-md w-14 h-14 mr-2"
                 />
-                {currentActivity.assets?.small_image && (
+                {activity.assets?.small_image && (
                   <img 
-                    src={getAssetImageUrl(currentActivity.application_id!, currentActivity.assets.small_image)} 
-                    alt={currentActivity.assets.small_text || 'Small Image'} 
+                    src={getAssetImageUrl(activity.application_id!, activity.assets.small_image)} 
+                    alt={activity.assets.small_text || 'Small Image'} 
                     className="absolute bottom-[-5px] right-0 w-5 h-5 rounded-full border border-transparent"
                   />
                 )}
               </div>
             )}
             <div className="flex flex-col justify-center flex-grow">
-              <p className="text-gray-300 font-bold">{currentActivity.name}</p>
-              {currentActivity.details && <p className="text-gray-300 text-sm mt-[-4px]">{currentActivity.details}</p>}
-              {currentActivity.state && <p className="text-gray-300 text-sm mt-[-4px]">{currentActivity.state}</p>}
+              <p className="text-gray-300 font-bold">{activity.name}</p>
+              {activity.details && <p className="text-gray-300 text-sm mt-[-4px]">{activity.details}</p>}
+              {activity.state && <p className="text-gray-300 text-sm mt-[-4px]">{activity.state}</p>}
             </div>
           </div>
         </div>
-      )}
+      ))}
 
-      {!data.listening_to_spotify && !currentActivity && (
+      {!data.listening_to_spotify && gameActivities.length === 0 && (
         <div className="bg-black bg-opacity-30 p-2 rounded-lg mb-2 flex flex-col items-center justify-center">
           <p className="text-white text-sm mb-2">Stella is currently resting. She'll be back soon!</p>
           <img src="/away.gif" alt="Away" className="w-full h-auto" />
