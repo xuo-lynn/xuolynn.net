@@ -234,12 +234,18 @@ const Lanyard: React.FC = () => {
   };
 
   const formatTime = (milliseconds: number) => {
-    const minutes = Math.floor(milliseconds / 60000);
-    const seconds = ((milliseconds % 60000) / 1000).toFixed(0);
-    return `${minutes}:${seconds.padStart(2, '0')}`;
+    const totalSeconds = Math.floor(milliseconds / 1000);
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    if (hours > 0) {
+      return `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
 
-  const songProgress = getSongProgress();
+  const songProgress = getSongProgress(); 
   const totalTime = data.spotify ? data.spotify.timestamps.end - data.spotify.timestamps.start : 0;
 
   const getActivityProgress = (activity: LanyardData['activities'][0]) => {
@@ -311,16 +317,16 @@ const Lanyard: React.FC = () => {
             <div className="flex flex-col justify-center flex-grow">
               <p className="text-gray-300 font-bold">{activity.details}</p>
               {activity.state && <p className="text-gray-300 text-sm mt-[-4px]">{activity.state}</p>}
-              {activity.timestamps && (
+              {activity.details !== "Viewing home page" && activity.name !== "Twitch" && (
                 <div className="flex items-center mt-1">
-                  <span className="text-gray-300 text-xs">{formatTime(Date.now() - activity.timestamps.start)}</span>
+                  <span className="text-gray-300 text-xs">{formatTime(Date.now() - (activity.timestamps?.start || 0))}</span>
                   <div className="flex-grow bg-gray-500 rounded-full h-1 mx-2">
                     <div
                       className="bg-white h-1 rounded-full"
                       style={{ width: `${getActivityProgress(activity)}%` }}
                     ></div>
                   </div>
-                  {activity.timestamps.end !== undefined && (
+                  {activity.timestamps?.end !== undefined && (
                     <span className="text-gray-300 text-xs">
                       {formatTime(activity.timestamps.end - activity.timestamps.start)}
                     </span>
