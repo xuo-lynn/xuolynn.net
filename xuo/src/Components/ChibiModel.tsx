@@ -91,7 +91,7 @@ const ThreeModel = () => {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="w-full h-full mx-auto sm:ml-0 ml-[-110px] sm:ml-auto" />;
+  return <canvas ref={canvasRef} className="w-full h-full mx-auto sm:ml-0 ml-[-110px]" />;
 };
 
 export default ThreeModel;
