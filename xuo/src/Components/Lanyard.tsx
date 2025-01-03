@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaSpotify, FaGamepad } from 'react-icons/fa';
+import { FaSpotify, FaGamepad, FaYoutube, FaTwitch } from 'react-icons/fa';
 import Waveform from './Waveform';
 
 interface LanyardData {
@@ -242,6 +242,18 @@ const Lanyard: React.FC = () => {
   const songProgress = getSongProgress();
   const totalTime = data.spotify ? data.spotify.timestamps.end - data.spotify.timestamps.start : 0;
 
+  const getActivityProgress = (activity: LanyardData['activities'][0]) => {
+    if (activity.timestamps) {
+      const { start, end } = activity.timestamps;
+      if (end !== undefined) {
+        const progress = ((Date.now() - start) / (end - start)) * 100;
+        return Math.min(progress, 100).toFixed(2); // progress doesn't exceed 100
+      }
+      return null; // or handle the case where 'end' is undefined
+    }
+    return null;
+  };
+
   return (
     <div>
       {data.listening_to_spotify && data.spotify && (
@@ -280,7 +292,12 @@ const Lanyard: React.FC = () => {
         <div key={index} className="bg-black bg-opacity-30 p-2 rounded-lg mb-2">
           <div className="flex items-start justify-start">
             <h2 className="text-white text-sm flex items-center mb-1">
-              Watching <FaGamepad className="ml-[5px] mb-[3px] w-3 h-3" />
+              Watching {activity.name} 
+              {activity.name === 'Twitch' ? (
+                <FaTwitch className="ml-1 pb-1 w-4 h-4" />
+              ) : (
+                <FaYoutube className="ml-1 pb-1 w-4 h-4" />
+              )}
             </h2>
           </div>
           <div className="flex items-center relative">
@@ -292,9 +309,24 @@ const Lanyard: React.FC = () => {
               />
             )}
             <div className="flex flex-col justify-center flex-grow">
-              <p className="text-gray-300 font-bold">{activity.name}</p>
-              {activity.details && <p className="text-gray-300 text-sm mt-[-4px]">{activity.details}</p>}
+              <p className="text-gray-300 font-bold">{activity.details}</p>
               {activity.state && <p className="text-gray-300 text-sm mt-[-4px]">{activity.state}</p>}
+              {activity.timestamps && (
+                <div className="flex items-center mt-1">
+                  <span className="text-gray-300 text-xs">{formatTime(Date.now() - activity.timestamps.start)}</span>
+                  <div className="flex-grow bg-gray-500 rounded-full h-1 mx-2">
+                    <div
+                      className="bg-white h-1 rounded-full"
+                      style={{ width: `${getActivityProgress(activity)}%` }}
+                    ></div>
+                  </div>
+                  {activity.timestamps.end !== undefined && (
+                    <span className="text-gray-300 text-xs">
+                      {formatTime(activity.timestamps.end - activity.timestamps.start)}
+                    </span>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -304,7 +336,7 @@ const Lanyard: React.FC = () => {
         <div key={index} className="bg-black bg-opacity-30 p-2 rounded-lg mb-2">
           <div className="flex items-start justify-start">
             <h2 className="text-white text-sm flex items-center mb-1">
-              Currently Playing <FaGamepad className="ml-[5px] mb-[3px] w-3 h-3" />
+              Playing <FaGamepad className="ml-[5px] mb-[3px] w-3 h-3" />
             </h2>
           </div>
           <div className="flex items-center relative">
