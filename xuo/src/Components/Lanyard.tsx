@@ -314,7 +314,7 @@ const Lanyard: React.FC = () => {
                   alt={activity.assets.large_text || 'Large Image'} 
                   className="rounded-md w-14 h-14 mr-2"
                 />
-                {activity.assets?.small_image && (
+                {activity.assets?.small_image && activity.name !== 'YouTube' && (
                   <img 
                     src={getAssetImageUrl(activity.application_id!, activity.assets.small_image)} 
                     alt={activity.assets.small_text || 'Small Image'} 
