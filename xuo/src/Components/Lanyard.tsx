@@ -222,6 +222,7 @@ const Lanyard: React.FC = () => {
   }
 
   const gameActivities = data.activities.filter(activity => activity.type === 0) as LanyardData['activities'][0][];
+  const watchingActivities = data.activities.filter(activity => activity.type === 3);
 
   const getSongProgress = () => {
     if (data.spotify) {
@@ -275,6 +276,30 @@ const Lanyard: React.FC = () => {
         </div>
       )}
 
+      {watchingActivities.map((activity, index) => (
+        <div key={index} className="bg-black bg-opacity-30 p-2 rounded-lg mb-2">
+          <div className="flex items-start justify-start">
+            <h2 className="text-white text-sm flex items-center mb-1">
+              Watching <FaGamepad className="ml-[5px] mb-[3px] w-3 h-3" />
+            </h2>
+          </div>
+          <div className="flex items-center relative">
+            {activity.assets?.large_image && (
+              <img 
+                src={getAssetImageUrl(activity.application_id!, activity.assets.large_image)} 
+                alt={activity.assets.large_text || 'Large Image'} 
+                className="rounded-md w-14 h-14 mr-2"
+              />
+            )}
+            <div className="flex flex-col justify-center flex-grow">
+              <p className="text-gray-300 font-bold">{activity.name}</p>
+              {activity.details && <p className="text-gray-300 text-sm mt-[-4px]">{activity.details}</p>}
+              {activity.state && <p className="text-gray-300 text-sm mt-[-4px]">{activity.state}</p>}
+            </div>
+          </div>
+        </div>
+      ))}
+
       {gameActivities.slice(0, 2).map((activity, index) => (
         <div key={index} className="bg-black bg-opacity-30 p-2 rounded-lg mb-2">
           <div className="flex items-start justify-start">
@@ -308,7 +333,7 @@ const Lanyard: React.FC = () => {
         </div>
       ))}
 
-      {!data.listening_to_spotify && gameActivities.length === 0 && (
+      {!data.listening_to_spotify && gameActivities.length === 0 && watchingActivities.length === 0 && (
         <div className="bg-black bg-opacity-30 p-2 rounded-lg mb-2 flex flex-col items-center justify-center">
           <p className="text-white text-sm mb-2">Stella is currently resting. She'll be back soon!</p>
           <img src="/away.gif" alt="Away" className="w-full h-auto" />
