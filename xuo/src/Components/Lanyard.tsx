@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaSpotify, FaGamepad, FaYoutube, FaTwitch } from 'react-icons/fa';
+import { FaSpotify, FaGamepad, FaYoutube, FaTwitch, FaDesktop } from 'react-icons/fa';
 import Waveform from './Waveform';
 
 interface LanyardData {
@@ -308,28 +308,46 @@ const Lanyard: React.FC = () => {
           </div>
           <div className="flex items-center relative">
             {activity.assets?.large_image && (
-              <img 
-                src={getAssetImageUrl(activity.application_id!, activity.assets.large_image)} 
-                alt={activity.assets.large_text || 'Large Image'} 
-                className="rounded-md w-14 h-14 mr-2"
-              />
+              <div className="relative">
+                <img 
+                  src={getAssetImageUrl(activity.application_id!, activity.assets.large_image)} 
+                  alt={activity.assets.large_text || 'Large Image'} 
+                  className="rounded-md w-14 h-14 mr-2"
+                />
+                {activity.assets?.small_image && (
+                  <img 
+                    src={getAssetImageUrl(activity.application_id!, activity.assets.small_image)} 
+                    alt={activity.assets.small_text || 'Small Image'} 
+                    className="absolute bottom-[-5px] right-0 w-6 h-6 rounded-full border border-transparent"
+                  />
+                )}
+              </div>
             )}
             <div className="flex flex-col justify-center flex-grow">
               <p className="text-gray-300 font-bold">{activity.details}</p>
               {activity.state && <p className="text-gray-300 text-sm mt-[-4px]">{activity.state}</p>}
               {activity.details !== "Viewing home page" && activity.name !== "Twitch" && (
                 <div className="flex items-center mt-1">
-                  <span className="text-gray-300 text-xs">{formatTime(Date.now() - (activity.timestamps?.start || 0))}</span>
-                  <div className="flex-grow bg-gray-500 rounded-full h-1 mx-2">
-                    <div
-                      className="bg-white h-1 rounded-full"
-                      style={{ width: `${getActivityProgress(activity)}%` }}
-                    ></div>
-                  </div>
+                  {activity.timestamps?.end === undefined && <FaDesktop className="mr-1 mb-0.5 w-3 h-3 text-green-500" />}
+                  <span
+                    className={`${
+                      activity.timestamps?.end === undefined ? 'text-sm font-bold text-green-500' : 'text-xs text-gray-300'
+                    }`}
+                  >
+                    {formatTime(Date.now() - (activity.timestamps?.start || 0))}
+                  </span>
                   {activity.timestamps?.end !== undefined && (
-                    <span className="text-gray-300 text-xs">
-                      {formatTime(activity.timestamps.end - activity.timestamps.start)}
-                    </span>
+                    <>
+                      <div className="flex-grow bg-gray-500 rounded-full h-1 mx-2">
+                        <div
+                          className="bg-white h-1 rounded-full"
+                          style={{ width: `${getActivityProgress(activity)}%` }}
+                        ></div>
+                      </div>
+                      <span className="text-gray-300 text-xs">
+                        {formatTime(activity.timestamps.end - activity.timestamps.start)}
+                      </span>
+                    </>
                   )}
                 </div>
               )}
