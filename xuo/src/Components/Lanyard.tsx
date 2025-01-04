@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaSpotify, FaGamepad, FaYoutube, FaTwitch, FaDesktop } from 'react-icons/fa';
+import { FaSpotify, FaGamepad, FaYoutube, FaTwitch, FaDesktop, FaTv } from 'react-icons/fa';
 import Waveform from './Waveform';
 
 interface LanyardData {
@@ -301,8 +301,10 @@ const Lanyard: React.FC = () => {
               Watching {activity.name} 
               {activity.name === 'Twitch' ? (
                 <FaTwitch className="ml-1 pb-1 w-4 h-4" />
-              ) : (
+              ) : activity.name === 'YouTube' ? (
                 <FaYoutube className="ml-1 pb-1 w-4 h-4" />
+              ) : (
+                <FaTv className="ml-1 pb-0.5 w-3 h-3" />
               )}
             </h2>
           </div>
