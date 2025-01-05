@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaSpotify, FaGamepad, FaYoutube, FaTwitch, FaDesktop, FaTv } from 'react-icons/fa';
+import { FaSpotify, FaGamepad, FaYoutube, FaTwitch, FaTv } from 'react-icons/fa';
 import Waveform from './Waveform';
 
 interface LanyardData {
@@ -135,13 +135,12 @@ const Lanyard: React.FC = () => {
 
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
-    if (data?.spotify) {
-      interval = setInterval(() => {
-        setCurrentTime(Date.now() - data.spotify!.timestamps.start);
-      }, 1000); // update every second
-    }
+    interval = setInterval(() => {
+      setCurrentTime(Date.now());
+    }, 1000); // update every second
+
     return () => clearInterval(interval);
-  }, [data?.spotify]);
+  }, []);
 
   useEffect(() => {
     if (data?.spotify?.album_art_url) {
@@ -221,13 +220,21 @@ const Lanyard: React.FC = () => {
     return <div>Error loading data.</div>;
   }
 
-  const gameActivities = data.activities.filter(activity => activity.type === 0) as LanyardData['activities'][0][];
-  const watchingActivities = data.activities.filter(activity => activity.type === 3);
+  const gameActivities = data.activities
+    .filter(activity => activity.type === 0)
+    .filter(activity => !(activity.name === 'League of Legends' && /Client/.test(activity.state || '')));
+  const watchingActivities = data.activities.filter(activity => activity.type === 3).map(activity => {
+    if (activity.name.toLowerCase().includes('anime')) {
+      return { ...activity, name: 'Anime' };
+    }
+    return activity;
+  });
 
   const getSongProgress = () => {
     if (data.spotify) {
       const { start, end } = data.spotify.timestamps;
-      const progress = ((currentTime) / (end - start)) * 100;
+      const elapsed = currentTime - start;
+      const progress = (elapsed / (end - start)) * 100;
       return Math.min(progress, 100).toFixed(2); // progress doesn't exceed 100
     }
     return null;
@@ -276,7 +283,7 @@ const Lanyard: React.FC = () => {
               <p className="text-gray-300 text-sm mt-[-4px]">{data.spotify.artist}</p>
               {songProgress && (
                 <div className="flex items-center mt-1">
-                  <span className="text-gray-300 text-xs">{formatTime(currentTime)}</span>
+                  <span className="text-gray-300 text-xs">{formatTime(currentTime - data.spotify.timestamps.start)}</span>
                   <div className="flex-grow bg-gray-500 rounded-full h-1 mx-2">
                     <div
                       className="bg-white h-1 rounded-full"
@@ -314,36 +321,27 @@ const Lanyard: React.FC = () => {
                 <img 
                   src={getAssetImageUrl(activity.application_id!, activity.assets.large_image)} 
                   alt={activity.assets.large_text || 'Large Image'} 
-                  className="rounded-md w-14 h-14 mr-2"
+                  className="rounded-md w-14 h-14 mr-2 object-cover"
                 />
               </div>
             )}
             <div className="flex flex-col justify-center flex-grow">
               <p className="text-gray-300 font-bold">{activity.details}</p>
               {activity.state && <p className="text-gray-300 text-sm mt-[-4px]">{activity.state}</p>}
-              {activity.details !== "Viewing home page" && activity.name !== "Twitch" && (
+              {activity.details !== "Viewing home page" && activity.name !== "Twitch" && activity.timestamps?.end !== undefined && (
                 <div className="flex items-center mt-1">
-                  {activity.timestamps?.end === undefined && <FaDesktop className="mr-1 mb-0.5 w-3 h-3 text-green-500" />}
-                  <span
-                    className={`${
-                      activity.timestamps?.end === undefined ? 'text-sm font-bold text-green-500' : 'text-xs text-gray-300'
-                    }`}
-                  >
+                  <span className="text-xs text-gray-300">
                     {formatTime(Date.now() - (activity.timestamps?.start || 0))}
                   </span>
-                  {activity.timestamps?.end !== undefined && (
-                    <>
-                      <div className="flex-grow bg-gray-500 rounded-full h-1 mx-2">
-                        <div
-                          className="bg-white h-1 rounded-full"
-                          style={{ width: `${getActivityProgress(activity)}%` }}
-                        ></div>
-                      </div>
-                      <span className="text-gray-300 text-xs">
-                        {formatTime(activity.timestamps.end - activity.timestamps.start)}
-                      </span>
-                    </>
-                  )}
+                  <div className="flex-grow bg-gray-500 rounded-full h-1 mx-2">
+                    <div
+                      className="bg-white h-1 rounded-full"
+                      style={{ width: `${getActivityProgress(activity)}%` }}
+                    ></div>
+                  </div>
+                  <span className="text-gray-300 text-xs">
+                    {formatTime(activity.timestamps.end - activity.timestamps.start)}
+                  </span>
                 </div>
               )}
             </div>
@@ -364,13 +362,13 @@ const Lanyard: React.FC = () => {
                 <img 
                   src={getAssetImageUrl(activity.application_id!, activity.assets.large_image)} 
                   alt={activity.assets.large_text || 'Large Image'} 
-                  className="rounded-md w-14 h-14 mr-2"
+                  className="rounded-md w-14 h-14 mr-2 object-cover"
                 />
                 {activity.assets?.small_image && (
                   <img 
                     src={getAssetImageUrl(activity.application_id!, activity.assets.small_image)} 
                     alt={activity.assets.small_text || 'Small Image'} 
-                    className="absolute bottom-[-5px] right-0 w-5 h-5 rounded-full border border-transparent"
+                    className="absolute bottom-[-5px] right-0 w-5 h-5 rounded-full border border-transparent object-cover"
                   />
                 )}
               </div>
@@ -379,6 +377,11 @@ const Lanyard: React.FC = () => {
               <p className="text-gray-300 font-bold">{activity.name}</p>
               {activity.details && <p className="text-gray-300 text-sm mt-[-4px]">{activity.details}</p>}
               {activity.state && <p className="text-gray-300 text-sm mt-[-4px]">{activity.state}</p>}
+              {activity.name === 'League of Legends' && activity.timestamps?.start && !/Client|Lobby/.test(activity.state || '') && (
+                <p className="text-green-500 text-sm mt-[-4px] flex items-center">
+                  Duration: {formatTime(Date.now() - activity.timestamps.start)}
+                </p>
+              )}
             </div>
           </div>
         </div>
