@@ -95,7 +95,7 @@ const DiscordComponent: React.FC = () => {
                                 <div>
                                     <h1 className="text-slate-200 text-xl font-semibold">stella</h1>
                                     <div className="flex items-center mt-[-5px]">
-                                        <p className="text-slate-300 text-regular">xuo (she/her)</p>
+                                        <p className="text-slate-300 text-regular">(she/her)</p>
                                         <div className="flex space-x-2 border-slate-500 border-[1px] rounded-md ml-2 pl-2 pr-2">
                                             <img src="nitro.gif" alt="Badge 1" title="Nitro Badge" className="w-5 h-5" />
                                             <img src="boost.gif" alt="Badge 2" title="Boost Badge" className="w-5 h-5" />
