@@ -224,8 +224,8 @@ const Lanyard: React.FC = () => {
     .filter(activity => activity.type === 0)
     .filter(activity => !(activity.name === 'League of Legends' && /Client/.test(activity.state || '')));
   const watchingActivities = data.activities.filter(activity => activity.type === 3).map(activity => {
-    if (activity.name.toLowerCase().includes('anime')) {
-      return { ...activity, name: 'Anime' };
+    if (activity.details && activity.details.startsWith('Watching ')) {
+      return { ...activity, details: activity.details.replace(/^Watching\s/, '') };
     }
     return activity;
   });
