@@ -43,7 +43,7 @@ const Projects = () => {
             <div className="relative">
               <Cinamoroll />
               <p className="absolute inset-0 flex flex-col justify-center items-center pt-[160px] text-lg text-gray-400 text-center mt-2">
-                Built and designed by xuo ©<br/>
+                Built and designed by xuo<br/>
                 All rights reserved ©
               </p>
             </div>
