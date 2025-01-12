@@ -28,24 +28,6 @@ const DiscordComponent: React.FC = () => {
         setEmailPopupOpen(!isEmailPopupOpen);
     };
 
-    const popupAnimation = `
-        @keyframes slideIn {
-            from {
-                transform: translateY(-10px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-    `;
-
-    useEffect(() => {
-        const styleSheet = document.styleSheets[0];
-        styleSheet.insertRule(popupAnimation, styleSheet.cssRules.length);
-    }, []);
-
     return (
         <AnimateOnScroll>
             <div className="relative flex flex-col items-center pt-7">
