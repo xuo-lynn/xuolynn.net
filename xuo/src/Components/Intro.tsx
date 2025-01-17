@@ -22,10 +22,10 @@ const Intro = () => {
       
       <h2 className="text-center text-2xl sm:text-3xl md:text-4xl text-slate-300 mb-6">(one's a preferred name)</h2>
       <div className='text-center text- sm:text-2xl md:text-2xl text-slate-300'>
-        <p className="mb-2">I'm a software engineer based in New York City. I've been</p>
-        <p className="mb-2">at <span className="text-blue-500">Meta</span> and <span className="text-red-500">Netflix</span> for their engineering experiences, and currently</p>
-        <p className="mb-2">a Founding Engineer developing a SaaS. I'll be graduating late 2025 and</p>
-        <p className="mb-2">currently looking for <strong className="text-white">internships</strong> <span className="text-white">or</span> <strong className="text-white">full-time!</strong></p>
+        <p className="mb-2">I'm a software engineer based in New York City, and have been</p>
+        <p className="mb-2">at <span className="text-blue-500">Meta</span> and <span className="text-red-500">Netflix</span> for their engineering experiences. I'm currently</p>
+        <p className="mb-2">developing a SaaS as a Founding Engineer. I'll graduate around late 2025 and</p>
+        <p className="mb-2">open for <strong className="text-white">internships</strong> <span className="text-white">or</span> <strong className="text-white">full-time</strong> opportunities!</p>
       </div>
       
       <ScrollIndicator targetId="discord" />
