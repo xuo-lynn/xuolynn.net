@@ -131,9 +131,14 @@ const DiscordComponent: React.FC = () => {
                                                         { name: 'Swift', color: '#f05138' },
                                                         { name: 'Kotlin', color: '#7f52ff' },
                                                         { name: 'React', color: '#61dafb' },
+                                                        { name: 'Next.js', color: '#000000' },
+                                                        { name: 'Docker', color: '#2496ED' },
                                                         { name: 'SpringBoot', color: '#6db33f' },
                                                         { name: 'MySQL', color: '#4479a1' },
-                                                        { name: 'AWS', color: '#ff9900' }
+                                                        { name: 'AWS', color: '#ff9900' },
+                                                        { name: 'Tailwind', color: '#38bdf8' },
+                                                        { name: 'GraphQL', color: '#e535ab' },
+                                                        { name: 'Redis', color: '#dc382d' }
                                                     ].map(role => (
                                                         <span key={role.name} className="flex items-center justify-center bg-slate-800 bg-opacity-50 px-2 py-0.5 rounded-md">
                                                             <span className="w-2.5 h-2.5 rounded-full mr-1" style={{ backgroundColor: role.color }}></span>
