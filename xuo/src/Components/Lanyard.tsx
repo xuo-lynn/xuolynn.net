@@ -379,7 +379,7 @@ const Lanyard: React.FC = () => {
               {activity.state && (
                 <p className="text-gray-300 text-sm mt-[-4px]">
                   {activity.state}
-                  {activity.assets?.large_text && ` - ${activity.assets.large_text}`}
+                  {activity.state === 'In Game ' && activity.assets?.large_text && ` - ${activity.assets.large_text}`}
                 </p>
               )}
               {activity.name === 'League of Legends' && activity.timestamps?.start && !/Client|Lobby/.test(activity.state || '') && (
