@@ -376,7 +376,12 @@ const Lanyard: React.FC = () => {
             <div className="flex flex-col justify-center flex-grow">
               <p className="text-gray-300 font-bold">{activity.name}</p>
               {activity.details && <p className="text-gray-300 text-sm mt-[-4px]">{activity.details}</p>}
-              {activity.state && <p className="text-gray-300 text-sm mt-[-4px]">{activity.state}</p>}
+              {activity.state && (
+                <p className="text-gray-300 text-sm mt-[-4px]">
+                  {activity.state}
+                  {activity.assets?.large_text && ` - ${activity.assets.large_text}`}
+                </p>
+              )}
               {activity.name === 'League of Legends' && activity.timestamps?.start && !/Client|Lobby/.test(activity.state || '') && (
                 <p className="text-green-500 text-sm mt-[-4px] flex items-center">
                   Duration: {formatTime(Date.now() - activity.timestamps.start)}
