@@ -39,7 +39,7 @@ const DiscordComponent: React.FC = () => {
                     <div className="bg-gradient-to-b from-black/70 to-black/20 rounded-lg relative">
                         <div className="relative">
                             <img 
-                                src="sakurabanner.png" 
+                                src="usagi gif.gif" 
                                 alt="Banner" 
                                 className="w-full h-auto rounded-t-lg" 
                             />
