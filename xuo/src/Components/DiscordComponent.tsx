@@ -5,6 +5,7 @@ import AnimateOnScroll from './AnimateOnScroll';
 import AvatarDisplay from './AvatarDisplay';
 import Email from './Email';
 import { FaComments } from 'react-icons/fa';
+import Status from './Status';
 
 const DiscordComponent: React.FC = () => {
     const [activeSection, setActiveSection] = useState<'about' | 'activity'>('activity');
@@ -39,12 +40,15 @@ const DiscordComponent: React.FC = () => {
                     <div className="bg-gradient-to-b from-black/70 to-black/20 rounded-lg relative">
                         <div className="relative">
                             <img 
-                                src="usagi gif.gif" 
+                                src="sakurabanner.png" 
                                 alt="Banner" 
                                 className="w-full h-auto rounded-t-lg" 
                             />
                             <div className="absolute bottom-[-80px] left-[15px]">
-                                <AvatarDisplay userId="212702039103373312" />
+                                <div className="flex items-center gap-2">
+                                    <AvatarDisplay userId="212702039103373312" />
+                                    <Status />
+                                </div>
                             </div>
                             <div className="relative">
                                 <button
