@@ -87,11 +87,11 @@ const Status: React.FC = () => {
   return (
     <div className="relative -ml-3 mt-4">
       {/* Main container */}
-      <div className="bg-[#fce7f3] rounded-xl px-3 pt-2 pb-1.5 relative w-fit max-w-[min(230px,80vw)] shadow-md border border-[#fbcfe8]">
-        <div className="absolute -top-2 left-2.5 w-5 h-3 bg-[#fce7f3] rounded-t-full"></div>
+      <div className="bg-gradient-to-br from-[#07101e] to-[#091524] rounded-xl px-3 pt-2 pb-1.5 relative w-fit sm:max-w-[230px] max-w-[184px] shadow-md border border-[#25292e]">
+        <div className="absolute -top-2 left-2.5 w-5 h-3 bg-[#07101e] rounded-t-full"></div>  
         {/* New circle element */}
-        <div className="absolute -top-5 -left-2 w-3 h-3 bg-[#fce7f3] rounded-full"></div>
-        <span className="text-gray-700 text-base break-words block leading-5">
+        <div className="absolute -top-5 -left-2 w-3 h-3 bg-[#07101e] rounded-full"></div>
+        <span className="text-gray-200 text-base break-words block leading-5">
           {customStatus}
         </span>
       </div>
