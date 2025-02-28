@@ -53,7 +53,7 @@ const DiscordComponent: React.FC = () => {
                             <div className="relative">
                                 <button
                                     onClick={toggleEmailPopup}
-                                    className="absolute top-[calc(100%+15px)] right-4 flex items-center gap-2 bg-black bg-opacity-50 hover:bg-opacity-70 text-slate-400 hover:text-white px-3 py-1.5 rounded-md transition-colors text-base"
+                                    className="absolute top-[calc(100%+15px)] right-4 items-center gap-2 bg-black bg-opacity-50 hover:bg-opacity-70 text-slate-400 hover:text-white px-3 py-1.5 rounded-md transition-colors text-base hidden md:flex"
                                 >
                                     <FaComments size={22} />
                                     <span>Message</span>
