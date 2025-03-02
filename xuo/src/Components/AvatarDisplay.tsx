@@ -61,8 +61,8 @@ const AvatarDisplay: React.FC<AvatarDisplayProps> = ({ userId }) => {
           className="avatar-decoration"
           style={{
             position: 'absolute',
-            top: '-14px',
-            left: '-13px',
+            top: '-13px',
+            left: '-13.5px',
             zIndex: 2,
             width: '153px',
             height: '153px'
