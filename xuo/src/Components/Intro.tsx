@@ -10,7 +10,7 @@ const Intro = () => {
           1500,
           '',
           500,
-          'hi, im set.',
+          'hi, im xuo.',
           1500,
           ''
         ]}
@@ -20,7 +20,7 @@ const Intro = () => {
         className="text-center font-bold text-4xl sm:text-5xl md:text-7xl text-white"
       />
       
-      <h2 className="text-center text-2xl sm:text-3xl md:text-4xl text-slate-300 mb-6">(one's my preferred name)</h2>
+      <h2 className="text-center text-2xl sm:text-3xl md:text-4xl text-slate-300 mb-6">(call me whatever you want though)</h2>
       <div className='text-center text- sm:text-2xl md:text-2xl text-slate-300'>
         <p className="mb-2">I'm a software engineer based in New York City, and have been</p>
         <p className="mb-2">at <span className="text-blue-500">Meta</span> and <span className="text-red-500">Netflix</span> for their engineering experiences. I'm currently</p>
