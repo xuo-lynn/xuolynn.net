@@ -10,7 +10,7 @@ const Intro = () => {
           1500,
           '',
           500,
-          'hi, im xuo.',
+          'hi, im lynn.',
           1500,
           ''
         ]}
