@@ -14,7 +14,8 @@ const Intro = () => {
           1500,
           '',
           500,
-          'hi, im xuo.'
+          'hi, im xuo.',
+          1500,
           ''
         ]}
         wrapper="h1"
