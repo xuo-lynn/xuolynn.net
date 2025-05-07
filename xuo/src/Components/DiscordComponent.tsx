@@ -79,7 +79,7 @@ const DiscordComponent: React.FC = () => {
                         <div className="text-left mt-20 ml-4">
                             <div className="flex items-center">
                                 <div>
-                                    <h1 className="text-slate-200 text-xl font-semibold">stella</h1>
+                                    <h1 className="text-slate-200 text-xl font-semibold">set</h1>
                                     <div className="flex items-center mt-[-5px]">
                                         <p className="text-slate-300 text-regular">(she/her)</p>
                                         <div className="flex space-x-2 border-slate-500 border-[1px] rounded-md ml-2 pl-2 pr-2">
