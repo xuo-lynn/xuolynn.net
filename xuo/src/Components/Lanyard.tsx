@@ -201,10 +201,7 @@ const Lanyard: React.FC = () => {
     if (applicationId === 6) {
       return `/discord/hang/${asset}.svg`;
     }
-    if (!asset) {
-      return `https://dcdn.dstn.to/app-icons/${applicationId}?size=600`;
-    }
-    if (asset.startsWith("mp:external")) {
+    if (asset && asset.startsWith("mp:external")) {
       const externalUrl = asset.replace("mp:", "");
       const discordCdnUrl = `https://media.discordapp.net/${externalUrl}`;
       return discordCdnUrl;
