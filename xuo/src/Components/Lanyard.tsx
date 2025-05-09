@@ -357,16 +357,16 @@ const Lanyard: React.FC = () => {
             </h2>
           </div>
           <div className="flex items-center relative">
-            {activity.application_id && (
+            {activity.assets?.large_image && (
               <div className="relative">
                 <img 
-                  src={`https://dcdn.dstn.to/app-icons/${activity.application_id}`} 
-                  alt={activity.assets?.large_text || 'Large Image'} 
+                  src={getAssetImageUrl(activity.application_id!, activity.assets.large_image)} 
+                  alt={activity.assets.large_text || 'Large Image'} 
                   className="rounded-md w-14 h-14 mr-2 object-cover"
                 />
                 {activity.assets?.small_image && (
                   <img 
-                    src={getAssetImageUrl(activity.application_id, activity.assets.small_image)} 
+                    src={getAssetImageUrl(activity.application_id!, activity.assets.small_image)} 
                     alt={activity.assets.small_text || 'Small Image'} 
                     className="absolute bottom-[-5px] right-0 w-5 h-5 rounded-full border border-transparent object-cover"
                   />
