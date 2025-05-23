@@ -35,10 +35,10 @@ const Projects = () => {
               githubLink="https://github.com/xuo-lynn/neural-network-chess-engine"
             />
             <Project 
-              title="Portfolio Website" 
-              description="Website you're currently on. Just a fun way for me showcase my career and skills!" 
-              techStack={["Typescript", "React", "NextJS", "ThreeJS", "TailwindCSS", "Lanyard", "Web Sockets"]}
-              githubLink="https://github.com/xuo-lynn/xuo"
+              title="Spotify Wrapped Mini" 
+              description="Lets you view your Spotify stats before year-end! Will show your top songs, artists, in a nice UI. Click me to visit the site!" 
+              techStack={["Java", "SpringBoot", "Spotify API", "OAuth2", "React", "Tailwind", "NextJS",]}
+              githubLink="https://github.com/xuo-lynn/wrapped-mini"
             />
             <div className="relative">
               <Cinamoroll />
