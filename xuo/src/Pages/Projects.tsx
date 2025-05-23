@@ -12,7 +12,7 @@ const Projects = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
           <Project 
               title="Spotify Wrapped Mini" 
-              description="View your Spotify stats before year-end! Made the site to get familiar with Spotify API before I start work there lol." 
+              description="View your Spotify stats before year-end! Just wanted to get familiar with Spotify API before I start work there lol." 
               techStack={["Java", "SpringBoot", "Spotify API", "OAuth2", "React", "Tailwind", "NextJS",]}
               githubLink="https://github.com/xuo-lynn/wrapped-mini"
             />
