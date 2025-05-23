@@ -10,6 +10,12 @@ const Projects = () => {
             / projects
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
+          <Project 
+              title="Spotify Wrapped Mini" 
+              description="View your Spotify stats before year-end! Made the site to get familiar with Spotify API before I start work there lol." 
+              techStack={["Java", "SpringBoot", "Spotify API", "OAuth2", "React", "Tailwind", "NextJS",]}
+              githubLink="https://github.com/xuo-lynn/wrapped-mini"
+            />
             <Project 
               title="Store Management System" 
               description="Inventory, sales, database management, etc. Basically Square if it never got to its A-series funding." 
@@ -33,12 +39,6 @@ const Projects = () => {
               description="Trained with neural net and dataset. Worse than Stockfish, but probably better than most people." 
               techStack={["Python", "Tensorflow", "Keras", "Chess.py", "Machine Learning"]}
               githubLink="https://github.com/xuo-lynn/neural-network-chess-engine"
-            />
-            <Project 
-              title="Spotify Wrapped Mini" 
-              description="Lets you view your Spotify stats before year-end! Will show your top songs, artists, in a nice UI. Click me to visit the site!" 
-              techStack={["Java", "SpringBoot", "Spotify API", "OAuth2", "React", "Tailwind", "NextJS",]}
-              githubLink="https://github.com/xuo-lynn/wrapped-mini"
             />
             <div className="relative">
               <Cinamoroll />
